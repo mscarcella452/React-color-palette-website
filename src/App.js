@@ -3,13 +3,16 @@ import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import appTheme from "./Theme/ThemeContext";
 import { AlertContextProvider } from "./Context/AlertContext";
+import PalettePage from "./Components/PalettePages/PalettePage";
+import { Box } from "@mui/material";
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App flexRow' style={{ height: "100vh" }}>
       <ThemeProvider theme={appTheme}>
-        <AlertContextProvider>{/* alert provider */}</AlertContextProvider>
-        my color palette website
+        {/* <AlertContextProvider></AlertContextProvider> */}
+
+        <PalettePage />
       </ThemeProvider>
     </div>
   );

@@ -1,10 +1,16 @@
-const palette = {
+const greyLight = "#f7f6f6";
+const greyMid = "#ebebeb";
+
+const lightBlue = "#3d8af7";
+const midRed = "#c70039";
+
+const palettes = {
   background: {
-    // primary:
-    // secondary:
+    primary: "#fff",
+    secondary: greyLight,
 
     fontColor: {
-      // primary:
+      primary: "#333",
       // secondary:
       // white:
       // black:
@@ -12,18 +18,18 @@ const palette = {
   },
   primary: {
     // light: will be calculated from palette.primary.main,
-    // main:
+    main: lightBlue,
     // fontColor:
   },
   secondary: {
     // light: will be calculated from palette.primary.main,
-    // main:
+    main: midRed,
     // fontColor:
   },
   info: {
-    // main:
+    main: greyMid,
     // fontColor:
   },
 };
 
-export { palette };
+export { palettes };

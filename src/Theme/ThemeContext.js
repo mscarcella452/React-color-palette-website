@@ -13,10 +13,10 @@ import breakpoints, {
   mobileLandscape,
 } from "./mediaQueries";
 
-export const fonts = {};
+export const fonts = { Montserrat: "'Montserrat', sans-serif" };
 
 const appTheme = createTheme({
-  // palette: palettes,
+  palette: palettes,
 
   breakpoints: breakpoints,
 
@@ -26,11 +26,21 @@ const appTheme = createTheme({
         // Name of the slot
         root: {
           // Some CSS
-          overflow: "hidden",
+          // overflow: "hidden",
           borderRadius: 0,
         },
       },
-      variants: [],
+      variants: [
+        {
+          props: { variant: "paperPage" },
+          style: {
+            width: "100%",
+            height: "100%",
+            backgroundColor: palettes.background.primary,
+            overflowY: "auto",
+          },
+        },
+      ],
     },
     MuiContainer: {
       styleOverrides: {
@@ -41,10 +51,21 @@ const appTheme = createTheme({
           alignItems: "center",
           height: "100%",
           width: "100%",
-          overflow: "hidden",
+          // overflow: "hidden",
         },
       },
-      variants: [],
+      variants: [
+        {
+          props: { variant: "gridContainer" },
+          style: {
+            padding: ".25rem",
+            overflowY: "auto",
+            alignItems: "flex-start",
+
+            // [lg]: { padding: "1rem" },
+          },
+        },
+      ],
     },
 
     MuiTypography: {
@@ -61,11 +82,12 @@ const appTheme = createTheme({
 });
 
 appTheme.typography.heading1 = {
+  fontFamily: fonts.Montserrat,
   textTransform: "capitalize",
   textAlign: "left",
   fontWeight: 400,
-  fontSize: "1.5rem",
-  [md]: { fontSize: "1.75rem" },
+  fontSize: "18px",
+  // [md]: { fontSize: "1.75rem" },
 
   //  PORTRAIT
   [mobilePortrait]: {
