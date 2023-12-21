@@ -67,6 +67,72 @@ const appTheme = createTheme({
         },
       ],
     },
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50px",
+          maxHeight: "100%",
+          padding: "10px",
+          borderRadius: "2.5px",
+          gap: "10px",
+          color: "#333",
+          fontWeight: 600,
+          fontFamily: fonts.Montserrat,
+
+          // overflow: "hidden",
+        },
+      },
+      variants: [
+        {
+          props: { variant: "primary" },
+          style: {
+            backgroundColor: palettes.primary.main,
+            border: "1.5px solid",
+            borderColor: palettes.primary.main,
+            color: "#fff",
+            "&:hover": {
+              // opacity: 0.8,
+              backgroundColor: palettes.primary.main,
+            },
+
+            // [lg]: { padding: "1rem" },
+          },
+        },
+        {
+          props: { variant: "secondary" },
+          style: {
+            border: "1.5px solid",
+            borderColor: palettes.primary.main,
+            color: palettes.primary.main,
+
+            // [lg]: { padding: "1rem" },
+          },
+        },
+      ],
+    },
+
+    MuiDivider: {
+      styleOverrides: {
+        // Name of the slot
+        root: {},
+      },
+      variants: [
+        {
+          props: { variant: "vertical" },
+          style: {
+            backgroundColor: palettes.info.main,
+            width: "2.5px",
+            height: "100%",
+            border: 0,
+            borderRadius: "2.5px",
+          },
+        },
+      ],
+    },
 
     MuiTypography: {
       defaultProps: {

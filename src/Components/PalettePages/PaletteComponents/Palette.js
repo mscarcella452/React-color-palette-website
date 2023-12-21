@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
 import {
   adjustBrightness,
@@ -7,6 +7,7 @@ import {
 import chroma from "chroma-js";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+// import { UIContext } from "../../../Context/AppContext";
 
 function Palette({ initialHighlight = 0, colors, paletteName }) {
   const [highlighted, setHighlighted] = useState(initialHighlight);
@@ -72,14 +73,9 @@ function Palette({ initialHighlight = 0, colors, paletteName }) {
               }}
             >
               <Button
-                className='flexRow'
                 sx={{
                   color: `${adjustBrightness(color)}`,
                   width: 1,
-                  pading: "5px",
-
-                  borderRadius: "2.5px",
-
                   "&:hover": {
                     backgroundColor: `${chroma(color).darken(1)}`,
                     color: `${fontLuminosity(chroma(color).darken(1))}`,
@@ -102,15 +98,8 @@ function Palette({ initialHighlight = 0, colors, paletteName }) {
       </Grid>
 
       <Button
-        className='flexRow paletteButton'
         sx={{
-          width: 1,
-          height: "50px",
-          padding: "10px",
-          borderRadius: "2.5px",
-          gap: "10px",
           backgroundColor: "background.secondary",
-          color: "#333",
           "&:hover": {
             ".moreButton": {
               backgroundColor: `${chroma(colors[highlighted]).darken(1)}`,
