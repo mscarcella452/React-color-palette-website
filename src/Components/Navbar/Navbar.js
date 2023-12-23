@@ -9,16 +9,20 @@ import {
   Link,
   Divider,
   Button,
+  IconButton,
 } from "@mui/material";
 
 import "./Navbar.css";
 
-import AuthenticationDialog from "./AthenticationDialog/AuthenticationDialog";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import MenuIcon from "@mui/icons-material/Menu";
 
-import SignUpAuthentication from "./AthenticationDialog/SignUpAuthentication";
+import SignIn from "./NavComponents/SignIn";
+import NavLinks from "./NavComponents/NavLinks";
+
 import FormDialog from "./AthenticationDialog/FormDialog";
+import PaletteLogo from "./NavComponents/PaletteLogo";
 
 const logo =
   "url('https://img.freepik.com/free-vector/paint-brushes-color-palette_1308-127912.jpg?w=1380&t=st=1701990166~exp=1701990766~hmac=be3c704103b65d083a03283f1c7e71a3e8eb114b12f9ebd7952713311eeee63e')";
@@ -38,67 +42,64 @@ function Navbar() {
     <Paper
       className='flexRow navbar_wrapper'
       elevation={1}
-      sx={{ backgroundColor: "background.secondary" }}
+      sx={{
+        backgroundColor: "background.secondary",
+        backgroundColor: "#a2d4e6",
+        padding: { xxs: "0 1rem", md: "0 1.5rem" },
+      }}
     >
-      <Container disableGutters sx={{ justifyContent: "space-between" }}>
-        <Button className='home_button' sx={{ "&:hover": { boxShadow: 1 } }}>
-          <Box className='navBar_logo' sx={{ backgroundImage: logo }} />
+      <Container
+        disableGutters
+        className='flexRow'
+        maxWidth={false}
+        sx={{
+          // justifyContent: "space-between",
+          display: "grid",
+          gridTemplateColumns: {
+            xxs: "50px 1fr",
+            mobile: "75px 1fr 75px",
+            // sm: "50px 1fr 1fr",
+            md: "1fr 2fr 275px",
+          },
+          gridTemplateRows: "1fr",
+          gap: { xxs: "20px", md: "2rem" },
 
-          <Typography
-            variant='heading1'
-            sx={{ fontWeight: 600, fontSize: "1.5rem" }}
-          >
-            Palette Craft
-          </Typography>
-        </Button>
-        <Box className='flexRow' sx={{ height: 1, gap: "20px" }}>
-          {links.map((link, index) => (
-            <Box className='flexRow' key={uuidv4()} sx={{ height: 1 }}>
-              <LinkDivider index={index} />
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          className='flexRow'
+          sx={{
+            height: 1,
 
-              <Link
-                className='navbar_link'
-                sx={{
-                  color: "#333",
-                  textDecoration: "none",
-                }}
-              >
-                <Typography variant='heading1'>{link}</Typography>
-              </Link>
-              <LinkDivider index={index} />
-            </Box>
-          ))}
-
-          {loggedIn && (
-            <Box
-              className='flexRow'
-              sx={{ height: 1, gap: "2.5px", marginLeft: "1rem" }}
-            >
-              <AccountCircleIcon sx={{ color: "info.dark" }} />
-              <Typography
-                variant='heading1'
-                sx={{ fontWeight: 500, marginRight: "2.5px" }}
-              >
-                {username}
-              </Typography>
-              <ArrowDropDownIcon sx={{ color: "info.dark" }} />
-            </Box>
-          )}
-
-          {!loggedIn && (
-            <Container
-              disableGutters
-              variant='button_container'
-              sx={{ width: "230px", gap: "10px" }}
-            >
-              <FormDialog variant='signUp' />
-              <FormDialog variant='logIn' />
-              {/* {navButtons.map(button => (
-                <AuthenticationDialog button={button} key={uuidv4()} />
-              ))} */}
-            </Container>
-          )}
+            display: { xxs: "flex", md: "none" },
+          }}
+        >
+          <IconButton>
+            <MenuIcon />
+          </IconButton>
         </Box>
+        <Box
+          className='flexRow'
+          sx={{ height: 1, padding: "10px 0", justifyContent: "flex-start" }}
+        >
+          <PaletteLogo />
+        </Box>
+        <Box
+          className='flexRow'
+          justifyContent='flex-end'
+          sx={{
+            height: 1,
+
+            padding: "1rem 0",
+            display: { xxs: "none", md: "flex" },
+          }}
+        >
+          <NavLinks />
+        </Box>
+
+        <SignIn loggedIn={loggedIn} />
       </Container>
     </Paper>
   );

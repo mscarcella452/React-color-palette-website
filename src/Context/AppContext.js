@@ -15,7 +15,12 @@ export const defaultUsers = [
 
 const initialValues = {
   users: defaultUsers,
-  currentUser: { loggedIn: false, username: "", palettes: [] },
+  currentUser: {
+    loggedIn: true,
+    username: "dallen12",
+    palettes: colorPalettes,
+  },
+  // currentUser: { loggedIn: false, username: "", palettes: [] },
   rememberMe: {
     on: true,
     email: defaultUsers[0].email,
@@ -44,7 +49,6 @@ const appReducer = (app, action) => {
       };
 
     case "sign_up":
-      console.log("hey");
       return {
         ...app,
         users: [...app.users, action.newUser],
@@ -53,6 +57,12 @@ const appReducer = (app, action) => {
           username: action.newUser.username,
           palettes: [],
         },
+      };
+    case "log_out":
+      return {
+        ...app,
+        currentUser: { loggedIn: false, username: "", palettes: [] },
+        // currentUser: initialValues.currentUser,
       };
 
     case "toggle_remember_me":

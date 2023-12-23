@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import { Typography, Button, Box } from "@mui/material";
+import { Typography, Button, Box, IconButton } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import RememberMeToggle from "./RememberMeToggle";
@@ -65,7 +65,7 @@ const formData = {
   },
 };
 
-function FormDialog({ variant }) {
+function FormDialog({ variant, buttonHeight, navBarSm }) {
   const {
     inputs,
     inputValues,
@@ -152,13 +152,20 @@ function FormDialog({ variant }) {
 
   return (
     <>
-      <Button
-        variant={buttonVariant}
-        onClick={handleOpen}
-        sx={{ width: 1, height: 1 }}
-      >
-        {formTitle}
-      </Button>
+      {navBarSm ? (
+        <IconButton onClick={handleOpen}>
+          <AccountCircleIcon />
+        </IconButton>
+      ) : (
+        <Button
+          variant={buttonVariant}
+          onClick={handleOpen}
+          size='small'
+          sx={{ height: buttonHeight }}
+        >
+          {formTitle}
+        </Button>
+      )}
       <DialogWrapper handleClose={handleClose} open={open}>
         <Typography
           variant='heading1'
