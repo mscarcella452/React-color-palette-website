@@ -115,22 +115,24 @@ export function Username({ username }) {
               width: 32,
               height: 32,
               textTransform: "uppercase",
-              backgroundColor: "primary.dark",
+              backgroundColor: "info.main",
+              color: "primary.main",
             }}
           >
             {username.charAt(0)}
           </Avatar>
           <Typography
-            variant='heading1'
+            variant='label'
             sx={{
               fontWeight: 500,
               marginRight: "2.5px",
               display: { xxs: "none", md: "block" },
+              // color: "fontColor.primary",
             }}
           >
             {username}
           </Typography>
-          <ArrowDropDownIcon sx={{ color: "info.dark" }} />
+          <ArrowDropDownIcon sx={{ color: "highlight.main" }} />
         </ListItem>
       </List>
       <Menu
@@ -176,7 +178,7 @@ export function Username({ username }) {
             <AccountCircleIcon fontSize='small' />
           </ListItemIcon>
           <ListItemText>
-            <Typography variant='heading1' color='text.secondary'>
+            <Typography variant='label' color='text.secondary'>
               Profile
             </Typography>
           </ListItemText>
@@ -186,7 +188,7 @@ export function Username({ username }) {
             <LogoutIcon fontSize='small' />
           </ListItemIcon>
           <ListItemText>
-            <Typography variant='heading1' color='text.secondary'>
+            <Typography variant='label' color='text.secondary'>
               Sign Out
             </Typography>
           </ListItemText>

@@ -10,7 +10,7 @@ const breakpoints = {
   },
 };
 
-// const iphone4 = "@media (max-height:480px) and (max-width:320px)";
+const iphone4 = "@media (max-height:480px) and (max-width:320px)";
 const xxs = `@media (min-width:${breakpoints.values.xxs}px)`;
 const xs = `@media (min-width:${breakpoints.values.xs}px)`;
 const mobile = `@media (min-width:${breakpoints.values.mobile}px)`;
@@ -25,6 +25,7 @@ const touchScreen = mobileLandscape || mobilePortrait;
 export default breakpoints;
 
 export {
+  iphone4,
   xxs,
   xs,
   mobile,

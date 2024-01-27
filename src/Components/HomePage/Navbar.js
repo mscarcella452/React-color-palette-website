@@ -12,17 +12,12 @@ import {
   IconButton,
 } from "@mui/material";
 
-import "./Navbar.css";
+// import "./Navbar.css";
 
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import SignIn from "./NavComponents/SignIn";
-import NavLinks from "./NavComponents/NavLinks";
-
-import FormDialog from "./AthenticationDialog/FormDialog";
-import PaletteLogo from "./NavComponents/PaletteLogo";
+import SignIn from "../Navbar/NavComponents/SignIn";
+import NavLinks from "../Navbar/NavComponents/NavLinks";
 
 const logo =
   "url('https://img.freepik.com/free-vector/paint-brushes-color-palette_1308-127912.jpg?w=1380&t=st=1701990166~exp=1701990766~hmac=be3c704103b65d083a03283f1c7e71a3e8eb114b12f9ebd7952713311eeee63e')";
@@ -41,10 +36,11 @@ function Navbar() {
   return (
     <Paper
       className='flexRow navbar_wrapper'
-      elevation={1}
+      elevation={0}
       sx={{
-        backgroundColor: "background.primary",
-        backgroundColor: "#415A6B",
+        backgroundColor: "primary.main",
+        backgroundColor: "backgrounds.primary",
+        // backgroundColor: "#415A6B",
         // backgroundColor: "#a2d4e6",
         padding: { xxs: "0 1rem", md: "0 1.5rem" },
         zIndex: 100,
@@ -87,7 +83,9 @@ function Navbar() {
           className='flexRow'
           sx={{ height: 1, padding: "10px 0", justifyContent: "flex-start" }}
         >
-          <Typography variant='boldLabel'>Palette Craft</Typography>
+          <Typography variant='label' fontWeight={700}>
+            Palette Craft
+          </Typography>
         </Box>
         <Box
           className='flexRow'

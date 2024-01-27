@@ -83,7 +83,6 @@ function PalettePage() {
         )}
         {loggedIn && palettes.length && <PaletteGrid palettes={palettes} />}
       </Container>
-      ;
     </Paper>
   );
 }

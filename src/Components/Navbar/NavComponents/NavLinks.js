@@ -1,7 +1,7 @@
 // import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Divider, Box, Link, Typography } from "@mui/material";
-const links = ["Create", "Palettes", "Templates"];
+const links = ["Create", "Your Palettes", "Templates"];
 
 function NavLinks() {
   return (
@@ -11,12 +11,14 @@ function NavLinks() {
           <Link
             className='navbar_link'
             sx={{
-              color: "#333",
+              // color: "#333",
+              // color: "#fff",
+              color: "secondary.dark",
               textDecoration: "none",
               marginLeft: index !== 0 && "15px",
             }}
           >
-            <Typography variant='heading1'>{link}</Typography>
+            <Typography variant='label'>{link}</Typography>
           </Link>
           {index < links.length - 1 && <Divider orientation='vertical' />}
         </Box>

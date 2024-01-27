@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import appTheme from "./Theme/ThemeContext";
 import { AlertContextProvider } from "./Context/AlertContext";
 import PalettePage from "./Components/PalettePages/PalettePage";
+import HomePage from "./Components/HomePage/HomePage";
 import { Box } from "@mui/material";
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       <ThemeProvider theme={appTheme}>
         {/* <AlertContextProvider></AlertContextProvider> */}
 
-        <PalettePage />
+        <HomePage />
+        {/* <PalettePage /> */}
       </ThemeProvider>
     </div>
   );
