@@ -1,0 +1,51 @@
+.paletteContainer {
+  /* position: relative; */
+  width: 100%;
+  height: 100%;
+}
+
+/* .paletteContainer::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.1;
+} */
+.gridContainer::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.1;
+}
+
+.queryTagContainer {
+  z-index: 10;
+  align-items: flex-start;
+  gap: 1rem;
+  position: absolute;
+  top: 69px;
+  width: 100%;
+  padding: 1rem;
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  background-color: "inherit";
+}
+.loading.reset {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.hide {
+  display: none;
+}

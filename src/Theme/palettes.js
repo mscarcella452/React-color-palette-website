@@ -10,13 +10,17 @@ const colors = {
   // info: "#EA552A",
   info: "#6C64FF",
   highlight: "#d7f3e0",
-  background: "#F8F8F8",
+  background: {
+    primary: "#F8F8F8",
+    secondary: "#ECECEC",
+  },
   fonts: { primary: "#000000", secondary: "#FFFFFF" },
 };
 
 const palettes = {
   background: {
-    primary: colors.background,
+    primary: colors.background.primary,
+    secondary: colors.background.secondary,
   },
   fontColor: {
     primary: colors.fonts.primary,

@@ -106,59 +106,59 @@ const appTheme = createTheme({
         },
       ],
     },
-    MuiButton: {
-      styleOverrides: {
-        // Name of the slot
-        root: {
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "40px",
-          padding: "10px",
-          borderRadius: "5px",
-          fontWeight: 500,
-          fontSize: "16px",
-          lineHeight: "20px",
-          [mobile]: { fontSize: "17px" },
-          // fontFamily: fonts.Montserrat,
-          fontFamily: fonts.Poppins,
+    // MuiButton: {
+    //   styleOverrides: {
+    //     // Name of the slot
+    //     root: {
+    //       display: "flex",
+    //       justifyContent: "center",
+    //       alignItems: "center",
+    //       height: "40px",
+    //       padding: "10px",
+    //       borderRadius: "5px",
+    //       fontWeight: 500,
+    //       fontSize: "16px",
+    //       lineHeight: "20px",
+    //       [mobile]: { fontSize: "17px" },
+    //       // fontFamily: fonts.Montserrat,
+    //       fontFamily: fonts.Poppins,
 
-          // overflow: "hidden",
-        },
-      },
-      variants: [
-        {
-          props: { variant: "primary" },
-          style: {
-            backgroundColor: palettes.fontColor.primary,
-            color: palettes.fontColor.secondary,
-            // border: "1.5px solid",
-            // borderColor: palettes.primary.main,
-            // color: "#fff",
-            border: "1.5px solid",
-            borderColor: palettes.fontColor.primary,
+    //       // overflow: "hidden",
+    //     },
+    //   },
+    //   variants: [
+    //     {
+    //       props: { variant: "primary" },
+    //       style: {
+    //         backgroundColor: palettes.fontColor.primary,
+    //         color: palettes.fontColor.secondary,
+    //         // border: "1.5px solid",
+    //         // borderColor: palettes.primary.main,
+    //         // color: "#fff",
+    //         border: "1.5px solid",
+    //         borderColor: palettes.fontColor.primary,
 
-            "&:hover": {
-              // opacity: 0.8,
-              backgroundColor: "transparent",
-              color: palettes.fontColor.primary,
-            },
+    //         "&:hover": {
+    //           // opacity: 0.8,
+    //           backgroundColor: "transparent",
+    //           color: palettes.fontColor.primary,
+    //         },
 
-            // [lg]: { padding: "1rem" },
-          },
-        },
-        {
-          props: { variant: "secondary" },
-          style: {
-            border: "1.5px solid",
-            borderColor: palettes.fontColor.primary,
-            color: palettes.fontColor.primary,
+    //         // [lg]: { padding: "1rem" },
+    //       },
+    //     },
+    //     {
+    //       props: { variant: "secondary" },
+    //       style: {
+    //         border: "1.5px solid",
+    //         borderColor: palettes.fontColor.primary,
+    //         color: palettes.fontColor.primary,
 
-            // [lg]: { padding: "1rem" },
-          },
-        },
-      ],
-    },
+    //         // [lg]: { padding: "1rem" },
+    //       },
+    //     },
+    //   ],
+    // },
 
     MuiDivider: {
       styleOverrides: {

@@ -41,7 +41,7 @@ function Navbar() {
   return (
     <Paper
       className='flexRow navbar_wrapper'
-      elevation={1}
+      elevation={0}
       sx={{
         backgroundColor: "background.primary",
         backgroundColor: "#415A6B",
