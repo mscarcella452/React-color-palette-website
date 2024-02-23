@@ -11,6 +11,7 @@ function QueryTagContainer({ filteredTags, queryTags, handleUpdateTags }) {
         backgroundColor: "background.primary",
         borderRadius: { xxs: 0, lg: "0 0 5px 5px" },
         zIndex: 2,
+        maxWidth: "lg",
       }}
     >
       <Typography variant='p' sx={{ fontWeight: 500, fontSize: "14px" }}>

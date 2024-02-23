@@ -13,15 +13,16 @@ function PaletteGrid({ palettes, children }) {
       columns={{ xxs: 1, mobile: 2, sm: minimum ? 3 : 2 }}
       sx={{
         width: 1,
-        padding: 1,
+        padding: "10px",
         margin: "auto",
         minHeight: "calc(100vh - 150px)",
-        height: "fit-content",
-        alignContent: "center",
+        height: "max-content",
+        alignContent: palettes.length > 0 ? "flex-start" : "center",
+        position: "relative",
       }}
     >
       {palettes.map(palette => (
-        <Grid className='flexRow' xxs={1} sx={{ padding: 1 }}>
+        <Grid className='flexRow' xxs={1} sx={{ padding: "10px" }}>
           <ColorPalette palette={palette} />
         </Grid>
       ))}

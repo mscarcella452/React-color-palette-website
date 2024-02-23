@@ -64,7 +64,7 @@ function ColorPalette({ palette }) {
         width: 1,
         aspectRatio: 1,
         // minHeight: 300,
-        maxHeight: { xxs: 400, sm: 300, md: 350 },
+        maxHeight: { xxs: 400, sm: 300, md: 325 },
         border: "1.5px solid #F0F0F0",
         borderRadius: "5px",
         gap: { xxs: 2, mobile: 1, md: 2 },

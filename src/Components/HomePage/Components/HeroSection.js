@@ -45,7 +45,7 @@ function HeroSection() {
           width: 1,
           height: 1,
           // border: 1,
-          maxWidth: "725px",
+          maxWidth: "800px",
           gap: { xxs: "2rem", xs: "3rem" },
           // [mobilePortrait]: {
           //   // gap: "1rem",
@@ -56,7 +56,7 @@ function HeroSection() {
         }}
       >
         <Typography variant='heading1'>
-          Life's to short for boring colors!
+          Life's too short for boring colors!
         </Typography>
         <Typography
           variant='subHeading1'

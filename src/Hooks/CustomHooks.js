@@ -100,7 +100,7 @@ export function useCopy(text) {
 // useDropdown
 // -------------------------------------
 // -------------------------------------
-export const useDropdown = (initialValue = false) => {
+export const useDropdown = (initialValue, forwardedRef) => {
   const [state, setState] = useState(initialValue);
   const ref = useRef();
 

@@ -40,6 +40,7 @@ function Navbar() {
       sx={{
         backgroundColor: "primary.main",
         backgroundColor: "backgrounds.primary",
+
         // backgroundColor: "#415A6B",
         // backgroundColor: "#a2d4e6",
         padding: { xxs: "0 1rem", md: "0 1.5rem" },

@@ -6,13 +6,14 @@ import {
   Container,
   Typography,
   Box,
-  Link,
   Divider,
   Button,
   IconButton,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import "./Navbar.css";
+import { useLocation } from "react-router-dom";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -83,12 +84,13 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
         </Box>
-        <Box
-          className='flexRow'
-          sx={{ height: 1, padding: "10px 0", justifyContent: "flex-start" }}
+        <Link
+          className='navbar_link'
+          to='/'
+          sx={{ textDecoration: "none", border: 1 }}
         >
           <Typography variant='boldLabel'>Palette Craft</Typography>
-        </Box>
+        </Link>
         <Box
           className='flexRow'
           justifyContent='flex-end'

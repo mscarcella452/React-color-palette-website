@@ -46,6 +46,17 @@ const appTheme = createTheme({
           },
         },
         {
+          props: { variant: "pagePaper" },
+          style: {
+            backgroundColor: palettes.background.primary,
+            position: "relative",
+            height: "100vh",
+            width: "100%",
+            zIndex: 2,
+            overscrollBehavior: "none",
+          },
+        },
+        {
           props: { variant: "featurePaper" },
           style: {
             width: "100%",
