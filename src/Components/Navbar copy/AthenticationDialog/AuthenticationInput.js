@@ -8,9 +8,9 @@ import {
 } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { debounce } from "lodash";
 import { validateInput } from "./AuthenticationDialogData";
 import { UIContext } from "../../../Context/AppContext";
@@ -69,7 +69,7 @@ export default function AuthenticationInput({
   return (
     <Box className=' flexColumn' sx={{ height: 1, width: 1, gap: "10px" }}>
       <Typography
-        variant='subHeading2'
+        variant='heading1'
         sx={{
           width: 1,
           fontWeight: 500,

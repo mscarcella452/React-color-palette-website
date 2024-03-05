@@ -8,26 +8,15 @@ import PalettePage from "./Components/PalettePages/PalettePage";
 import TemplatePage from "./Components/TemplatePage/TemplatePage";
 import UserPalettesPage from "./Components/UserPalettesPage/UserPalettesPage";
 import HomePage from "./Components/HomePage/HomePage";
-import { Route, Routes, useLocation } from "react-router-dom";
-
-import Navbar from "./Components/Navbar/Navbar";
-
-import { templatePalettes } from "./Palettes/templatePalettes";
-import { userPalettes } from "./Palettes/userPalettes";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route
-          path='/userPalettes'
-          element={<UserPalettesPage palettes={userPalettes} />}
-        />
-        <Route
-          path='/templates'
-          element={<TemplatePage palettes={templatePalettes} />}
-        />
+        <Route path='/userPalettes' element={<UserPalettesPage />} />
+        <Route path='/templatePalettes' element={<TemplatePage />} />
       </Routes>
     </ThemeProvider>
   );

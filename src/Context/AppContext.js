@@ -1,6 +1,8 @@
 import React, { useReducer, createContext, useCallback } from "react";
 import { colorPalettes } from "../Components/PalettePages/SeedColors";
 
+import { userPalettes } from "../Palettes/userPalettes";
+
 export const UIContext = createContext();
 export const UIDispatchContext = createContext();
 
@@ -8,68 +10,67 @@ export const defaultUsers = [
   {
     username: "dallen12",
     email: "dallenSperms@gmail.com",
-    password: "tourDeFrance12",
-    palettes: colorPalettes,
+    password: "tourDeFrance12!",
+    palettes: userPalettes,
+  },
+  {
+    username: "mike",
+    email: "mike12@gmail.com",
+    password: "Michael12!",
+    palettes: [],
   },
 ];
 
 const initialValues = {
   users: defaultUsers,
-  currentUser: {
-    loggedIn: true,
-    username: "dallen12",
-    palettes: colorPalettes,
-  },
-  // currentUser: { loggedIn: false, username: "", palettes: [] },
-  rememberMe: {
-    on: true,
-    email: defaultUsers[0].email,
-    password: defaultUsers[0].password,
-  },
+  // currentUserIndex: null,
+  currentUser: null,
+  storedLogIn: { email: "", password: "" },
 };
 
 const filterUser = (email, users) =>
   users.filter(user => user.email.toUpperCase() === email.toUpperCase());
 
+// const findUserIndex = (email, users) =>
+//   users.findIndex(user => user.email.toUpperCase() === email.toUpperCase());
+
+// const userIndex = findUserIndex("mike12@gmail.com", initialValues.users)[0];
+
+const findUserIndex = (email, users) =>
+  users.findIndex(user => user.email.toUpperCase() === email.toUpperCase());
+
 const appReducer = (app, action) => {
   switch (action.type) {
     case "log_in":
-      const user = filterUser(action.email, app.users)[0];
+      // const index = findUserIndex(action.userInfo.email, app.users);
+      // console.log(action.email);
+
+      const user = filterUser(action.userInfo.email, app.users)[0];
 
       return {
         ...app,
-        currentUser: {
-          loggedIn: true,
-          username: user.username,
-          palettes: user.palettes,
-        },
-        // rememberMe: action.payload.rememberMe
-        //   ? { username: user.username, palettes: user.palettes }
-        //   : null,
+        currentUser: { username: user.username, palettes: user.palettes },
+        // currentUserIndex: index,
+        storedLogIn: action.rememberMe
+          ? { email: action.userInfo.email, password: action.userInfo.password }
+          : initialValues.storedLogIn,
       };
 
     case "sign_up":
       return {
-        ...app,
-        users: [...app.users, action.newUser],
-        currentUser: {
-          loggedIn: true,
-          username: action.newUser.username,
-          palettes: [],
-        },
+        // ...app,
+        users: [...app.users, { ...action.userInfo, palettes: [] }],
+        currentUser: action.userInfo,
+        // currentUser: newUser.username,
+        storedLogIn: action.rememberMe
+          ? { email: action.userInfo.email, password: action.userInfo.password }
+          : initialValues.storedLogIn,
       };
     case "log_out":
       return {
         ...app,
-        currentUser: { loggedIn: false, username: "", palettes: [] },
+        currentUser: null,
         // currentUser: initialValues.currentUser,
-      };
-
-    case "toggle_remember_me":
-      // REMEMBER ME COULD BE A SEPERATE CONTEXT. ONLY NEED FOR THE DIALOGS. NO REASON TO RE-RENDER ENTIRE SITE
-      return {
-        ...app,
-        rememberMe: { ...app.rememberMe, on: !app.rememberMe.on },
       };
 
     default:
@@ -78,10 +79,10 @@ const appReducer = (app, action) => {
 };
 
 export function AppContextProvider({ children }) {
-  const [user, UIDispatch] = useReducer(appReducer, initialValues);
+  const [app, UIDispatch] = useReducer(appReducer, initialValues);
 
   return (
-    <UIContext.Provider value={user}>
+    <UIContext.Provider value={app}>
       <UIDispatchContext.Provider value={UIDispatch}>
         {children}
       </UIDispatchContext.Provider>

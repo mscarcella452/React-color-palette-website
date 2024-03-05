@@ -51,6 +51,7 @@ const appTheme = createTheme({
             backgroundColor: palettes.background.primary,
             position: "relative",
             height: "100vh",
+
             width: "100%",
             zIndex: 2,
             overscrollBehavior: "none",
@@ -117,59 +118,68 @@ const appTheme = createTheme({
         },
       ],
     },
-    // MuiButton: {
-    //   styleOverrides: {
-    //     // Name of the slot
-    //     root: {
-    //       display: "flex",
-    //       justifyContent: "center",
-    //       alignItems: "center",
-    //       height: "40px",
-    //       padding: "10px",
-    //       borderRadius: "5px",
-    //       fontWeight: 500,
-    //       fontSize: "16px",
-    //       lineHeight: "20px",
-    //       [mobile]: { fontSize: "17px" },
-    //       // fontFamily: fonts.Montserrat,
-    //       fontFamily: fonts.Poppins,
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
 
-    //       // overflow: "hidden",
-    //     },
-    //   },
-    //   variants: [
-    //     {
-    //       props: { variant: "primary" },
-    //       style: {
-    //         backgroundColor: palettes.fontColor.primary,
-    //         color: palettes.fontColor.secondary,
-    //         // border: "1.5px solid",
-    //         // borderColor: palettes.primary.main,
-    //         // color: "#fff",
-    //         border: "1.5px solid",
-    //         borderColor: palettes.fontColor.primary,
+          fontWeight: 500,
+          fontSize: "14px",
+          height: "35px",
+          [xs]: { height: "40px" },
+          [sm]: { fontSize: "16px" },
 
-    //         "&:hover": {
-    //           // opacity: 0.8,
-    //           backgroundColor: "transparent",
-    //           color: palettes.fontColor.primary,
-    //         },
+          fontFamily: fonts.Poppins,
+          "&:hover": {
+            opacity: 0.8,
+          },
+        },
+      },
+      variants: [
+        {
+          props: { variant: "primary" },
+          style: {
+            backgroundColor: palettes.info.main,
+            color: palettes.background.secondary,
+            border: "solid 1px",
+            borderColor: palettes.info.main,
 
-    //         // [lg]: { padding: "1rem" },
-    //       },
-    //     },
-    //     {
-    //       props: { variant: "secondary" },
-    //       style: {
-    //         border: "1.5px solid",
-    //         borderColor: palettes.fontColor.primary,
-    //         color: palettes.fontColor.primary,
+            // [lg]: { padding: "1rem" },
+          },
+        },
+        {
+          props: { variant: "secondary" },
+          style: {
+            color: palettes.info.main,
+            border: "solid 1px",
+          },
+        },
+      ],
+    },
 
-    //         // [lg]: { padding: "1rem" },
-    //       },
-    //     },
-    //   ],
-    // },
+    MuiIconButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+      },
+      variants: [
+        {
+          props: { variant: "primary" },
+          style: {
+            height: "35px",
+            width: "35px",
+            color: palettes.info.main,
+          },
+        },
+      ],
+    },
 
     MuiDivider: {
       styleOverrides: {
@@ -281,16 +291,17 @@ appTheme.typography.heading3 = {
 appTheme.typography.subHeading1 = {
   fontWeight: 400,
   // color: "#36454F",
-  fontSize: "26px",
-  lineHeight: "44px",
+
+  fontSize: "20px",
+  lineHeight: "32px",
   textAlign: "center",
 
   // fontSize: { xxs: "16px", xs: "18px", mobile: "22px", sm: "24px" },
   // lineHeight: { xxs: "26px", xs: "28px", mobile: "32px", sm: "36px" },
 
   // [xs]: { fontSize: "18px", lineHeight: "28px", color: "green" },
-  // [mobile]: { fontSize: "22px", lineHeight: "32px", color: "blue" },
-  // [mobile]: { fontSize: "20px", lineHeight: "32px" },
+  [mobile]: { fontSize: "22px", lineHeight: "36px" },
+  [sm]: { fontSize: "26px", lineHeight: "44px" },
   // [sm]: { fontSize: "24px", lineHeight: "36px" },
   // [mobile]: { textAlign: "center" },
 };
@@ -318,8 +329,14 @@ appTheme.typography.label = {
   // fontFamily: fonts.Poppins,
   fontWeight: 400,
   // color: "navy",
-  fontSize: "20px",
+  fontSize: "14px",
   lineHeight: "30px",
+  [xs]: { fontSize: "16px" },
+  [mobile]: { fontSize: "18px" },
+  [mobileLandscape]: {
+    [xs]: { fontSize: "16px" },
+    // [sm]: { fontSize: "16px" },
+  },
 };
 
 appTheme.typography.tinyLabel = {

@@ -3,7 +3,7 @@ import { useToggle } from "../../../Hooks/CustomHooks";
 import { Typography, Box } from "@mui/material";
 import { UIContext, UIDispatchContext } from "../../../Context/AppContext";
 import { FormContext, FormDispatchContext } from "../../../Context/FormContext";
-import ToggleSwitchButton from "../../../Helpers/HelperComponents/ToggleSwitchIcon";
+import ToggleSwitchButton from "../../../Helpers/HelperComponents/ToggleSwitchButton";
 
 function RememberMeToggle() {
   const { rememberMe } = useContext(FormContext);

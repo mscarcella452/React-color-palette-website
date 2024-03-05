@@ -22,7 +22,7 @@ function DialogWrapper({ open, handleClose, children }) {
         className='flexRow'
         open={open}
         TransitionComponent={Transition}
-        // keepMounted
+        keepMounted
         onClose={handleClose}
         aria-describedby='alert-dialog-slide-description'
         PaperProps={{

@@ -1,124 +1,136 @@
-import { useState, useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { UIContext, UIDispatchContext } from "../../Context/AppContext";
-import {
-  Paper,
-  Container,
-  Typography,
-  Box,
-  Divider,
-  Button,
-  IconButton,
-} from "@mui/material";
-import { Link } from "react-router-dom";
-
+import { useContext, useEffect, useRef, useState } from "react";
+import { UIContext } from "../../Context/AppContext";
+import { Paper, Box, IconButton, useMediaQuery } from "@mui/material";
+import { NavLink, CurrentUserAvatar } from "./NavComponents/HelperComponents";
+import AnimatedHamburgerIcon from "../../Helpers/HelperComponents/AnimatedHamburgerIcon";
+import HamburgerMenu from "./NavComponents/HamburgerMenu";
+import FormDialog from "./NavComponents/FormDialog";
 import "./Navbar.css";
-import { useLocation } from "react-router-dom";
+import { md, sm, mobileLandscape } from "../../Theme/mediaQueries";
 
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import MenuIcon from "@mui/icons-material/Menu";
-
-import SignIn from "./NavComponents/SignIn";
-import NavLinks from "./NavComponents/NavLinks";
-
-import FormDialog from "./AthenticationDialog/FormDialog";
-import PaletteLogo from "./NavComponents/PaletteLogo";
-
-const logo =
-  "url('https://img.freepik.com/free-vector/paint-brushes-color-palette_1308-127912.jpg?w=1380&t=st=1701990166~exp=1701990766~hmac=be3c704103b65d083a03283f1c7e71a3e8eb114b12f9ebd7952713311eeee63e')";
-
-const links = ["Create", "Palettes", "Templates"];
-
-const navButtons = [
-  { name: "Sign Up", btnVariant: "primary", dialogVariant: "signUp" },
-  { name: "Log In", btnVariant: "secondary", dialogVariant: "logIn" },
+const navLinks = [
+  { text: "Create", to: "/createPalette" },
+  { text: "Your Palettes", to: "/userPalettes" },
+  { text: "Templates", to: "/templatePalettes" },
 ];
 
 function Navbar() {
   const { currentUser } = useContext(UIContext);
-  const { username, loggedIn } = currentUser;
+  const [showMenu, setShowMenu] = useState(false);
+  const lockMenu = useMediaQuery(md);
+  const hideAuthenticationIcon = useMediaQuery(sm || mobileLandscape);
+
+  console.log(hideAuthenticationIcon);
+
+  const hamburgerMenuRef = useRef();
+  const navbarRef = useRef();
+
+  useEffect(() => {
+    if (showMenu && lockMenu) setShowMenu(false);
+  }, [lockMenu, showMenu, setShowMenu]);
+
+  useEffect(() => {
+    const handleHeightChange = () => {
+      const height =
+        hamburgerMenuRef.current && hamburgerMenuRef.current.offsetHeight;
+      if (navbarRef.current) {
+        navbarRef.current.style.height = showMenu ? height + 70 + "px" : "70px";
+      }
+    };
+
+    handleHeightChange(); // Initial height calculation
+
+    const resizeObserver = new ResizeObserver(handleHeightChange);
+    if (hamburgerMenuRef.current) {
+      resizeObserver.observe(hamburgerMenuRef.current);
+    }
+
+    return () => {
+      if (hamburgerMenuRef.current) {
+        resizeObserver.unobserve(hamburgerMenuRef.current);
+      }
+    };
+  }, [hamburgerMenuRef, navbarRef, showMenu]);
+
+  const handleClick = () => (showMenu ? setShowMenu(false) : setShowMenu(true));
 
   return (
     <Paper
-      className='flexRow navbar_wrapper'
+      ref={navbarRef}
+      className='navbar_container'
       elevation={0}
       sx={{
-        backgroundColor: "background.primary",
-        backgroundColor: "#415A6B",
-        // backgroundColor: "#a2d4e6",
-        padding: { xxs: "0 1rem", md: "0 1.5rem" },
-        zIndex: 100,
-        color: "#fff",
+        backgroundColor: {
+          xxs: showMenu ? "primary.main" : "primary.dark",
+
+          md: "primary.dark",
+        },
+
+        transition: "all 1s linear",
       }}
     >
-      <Container
-        disableGutters
-        className='flexRow'
-        maxWidth={false}
+      <Box
+        className='navbar flexRow'
         sx={{
-          // justifyContent: "space-between",
-          display: "grid",
-          gridTemplateColumns: {
-            xxs: "50px 1fr",
-            mobile: "75px 1fr 75px",
-            // sm: "50px 1fr 1fr",
-            md: "1fr 2fr 275px",
-          },
-          gridTemplateRows: "1fr",
-          gap: { xxs: "20px", md: "2rem" },
-
-          alignItems: "center",
-          justifyContent: "center",
+          padding: { xxs: "10px 1.5rem", sm: "10px 2rem" },
+          // backgroundColor: "primary.main",
         }}
       >
-        <Box
-          className='flexRow'
-          sx={{
-            height: 1,
+        <Box className='logo_wrapper flexRow' sx={{ gap: 2 }}>
+          {!lockMenu && (
+            <IconButton
+              onClick={handleClick}
+              variant='primary'
+              sx={{ zIndex: 2 }}
+            >
+              <AnimatedHamburgerIcon
+                animate={showMenu}
+                backgroundColor='info.main'
+              />
+            </IconButton>
+          )}
 
-            display: { xxs: "flex", md: "none" },
+          <NavLink variant='subHeading1'>
+            palette<span className='logo_alternate'>CRAFT</span>
+          </NavLink>
+        </Box>
+        {lockMenu && (
+          <Box className='navLinks_wrapper flexRow'>
+            {navLinks.map((navLink, index) => (
+              <NavLink key={index} to={navLink.to} variant='subHeading2'>
+                {navLink.text}
+              </NavLink>
+            ))}
+          </Box>
+        )}
+        <Box
+          className='authentication_wrapper flexRow'
+          sx={{
+            width: { xxs: "fit-content", sm: 225 },
+            [mobileLandscape]: { width: 225 },
           }}
         >
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
+          <>
+            {currentUser !== null ? (
+              <CurrentUserAvatar
+                username={currentUser.username}
+                showMenu={showMenu}
+              />
+            ) : hideAuthenticationIcon ? (
+              <>
+                <FormDialog variant='Sign Up' />
+                <FormDialog variant='Log In' />
+              </>
+            ) : (
+              <FormDialog variant='Icon' />
+            )}
+          </>
         </Box>
-        <Link
-          className='navbar_link'
-          to='/'
-          sx={{ textDecoration: "none", border: 1 }}
-        >
-          <Typography variant='boldLabel'>Palette Craft</Typography>
-        </Link>
-        <Box
-          className='flexRow'
-          justifyContent='flex-end'
-          sx={{
-            height: 1,
+      </Box>
 
-            padding: "1rem 0",
-            display: { xxs: "none", md: "flex" },
-          }}
-        >
-          <NavLinks />
-        </Box>
-
-        <SignIn loggedIn={loggedIn} />
-      </Container>
+      {!lockMenu && <HamburgerMenu hamburgerMenuRef={hamburgerMenuRef} />}
     </Paper>
   );
 }
 
 export default Navbar;
-
-function LinkDivider({ index }) {
-  return (
-    <Divider
-      variant='vertical'
-      sx={{
-        display: index === 0 || index === links.length - 1 ? "none" : "block",
-      }}
-    />
-  );
-}

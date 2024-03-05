@@ -1,31 +1,47 @@
-.navbar_wrapper {
-  height: 70px;
+.navbar_container {
   top: 0;
-  width: 1;
+  width: 100%;
   position: sticky;
-  /* padding: 1rem 2rem; */
-  z-index: 2;
+  z-index: 10;
+  overflow: hidden;
 }
 
-.home_button {
-  gap: 10px;
-  padding: 0 10px;
+.navbar {
+  height: 70px;
+  gap: 1.5rem;
 }
 
-.navBar_logo {
-  height: 40px;
-  width: 40px;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
+.logo_wrapper,
+.navLinks_wrapper,
+.authentication_wrapper,
+.navbar_link {
+  height: 100%;
+}
+
+.logo_wrapper {
+  justify-content: flex-start;
+  flex: 1;
+}
+.navLinks_wrapper {
+  width: 500px;
+  justify-content: space-around;
+}
+
+.authentication_wrapper {
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
 .navbar_link {
   cursor: pointer;
+  text-decoration: none;
 }
 
-.navbar_divider {
-  width: 2.5px;
-  border: 0;
-  border-radius: 2.5px;
+.navbar_icon {
+  height: 20px;
+  width: 20px;
+}
+.icon {
+  height: 35px;
+  width: 35px;
 }

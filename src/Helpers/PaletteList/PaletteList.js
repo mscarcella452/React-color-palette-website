@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { Box, TextField } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import { useDropdown, useInfiniteScroll } from "../../Hooks/CustomHooks";
 import PaletteGrid from "./Components/PaletteGrid";
 import { StartAdornment, EndAdornment } from "./Components/TextFieldAdornments";
@@ -86,6 +86,7 @@ function PaletteList({ palettes, footerRef }) {
           borderBottom: 1,
           borderColor: "background.secondary",
           backgroundColor: "background.primary",
+          justifyContent: "space-around",
         }}
       >
         <TextField

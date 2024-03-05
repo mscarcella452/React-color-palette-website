@@ -168,7 +168,7 @@ function FormDialog({ variant, buttonHeight, navBarSm }) {
       )}
       <DialogWrapper handleClose={handleClose} open={open}>
         <Typography
-          variant='subHeading1'
+          variant='heading1'
           sx={{ fontWeight: 600, fontSize: "1.5rem" }}
         >
           {formTitle}

@@ -1,6 +1,6 @@
-import { useMemo } from "react";
+import { useContext, useRef } from "react";
 import { Paper, Container, Typography, Box, Button } from "@mui/material";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/Navbar";
 import HeroSection from "./Components/HeroSection";
 import Feature from "./Components/Features/Feature";
 import MockFeature from "./Components/Mock Feature/MockFeature";
@@ -9,26 +9,37 @@ import PaletteFeatures from "./Components/PaletteFeatures/PaletteFeatures";
 import Footer from "../Footer/Footer";
 import { mobileLandscape, mobilePortrait } from "../../Theme/mediaQueries";
 import SiteOverview from "./Components/SiteOverview";
+import { UIContext } from "../../Context/AppContext";
 
 const paintStroke =
   'url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png")';
 
 function HomePage() {
+  const { currentUser, users } = useContext(UIContext);
+  const homepageRef = useRef();
   return (
     <Paper
-      variant='paperPage'
-      sx={{
-        position: "relative",
-        // backgroundColor: "info.light",
-
-        // backgroundColor: "info.light",
-        backgroundColor: "background.secondary",
-        //
-
-        // backgroundColor: colors.teal.darkest,
-      }}
+      variant='pagePaper'
+      ref={homepageRef}
+      sx={{ overscrollBehavior: "none" }}
     >
-      <Navbar />
+      <Navbar forwardedRef={homepageRef} />
+
+      {/* <Box sx={{ height: "calc(100vh - 70px)", width: 1, background: "#fff" }}>
+        <div>
+          Current User:
+          {currentUser !== null && currentUser.username}
+        </div>
+        {users.map((user, index) => (
+          <Box className='flexColumn' sx={{ border: 1, gap: 1 }}>
+            <div>user: {index + 1}</div>
+            <div>username: {user.username}</div>
+            <div>email: {user.email}</div>
+            <div>password: {user.password}</div>
+          </Box>
+        ))}
+      </Box> */}
+
       <HeroSection />
       <Feature contentIndex={0} />
       <MockFeature />

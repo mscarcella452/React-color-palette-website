@@ -15,14 +15,49 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
 });
 
-function DialogWrapper({ open, handleClose, children }) {
+function AuthenticationDialog({
+  button,
+  open,
+  handleOpen,
+  handleClose,
+  children,
+}) {
+  // const [open, setOpen] = useState(false);
+
+  // const [formData, setFormData] = useState(initialFormData);
+  // const [rememberMe, setRememberMe] = useState(false);
+
+  // PROP FOR OPEN, SET OPEN AND BUTTON. ADD TO EACH LOG IN
+
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+
+  const dialogContent = {
+    signUp: (
+      <SignUpAuthentication dialogOpen={open} handleClose={handleClose} />
+    ),
+    logIn: <LogInAuthentication dialogOpen={open} handleClose={handleClose} />,
+  };
+
   return (
     <>
+      <Button
+        variant={button.btnVariant}
+        onClick={handleOpen}
+        sx={{ width: 1, height: 1 }}
+      >
+        {button.name}
+      </Button>
       <Dialog
         className='flexRow'
         open={open}
         TransitionComponent={Transition}
-        // keepMounted
+        keepMounted
         onClose={handleClose}
         aria-describedby='alert-dialog-slide-description'
         PaperProps={{
@@ -39,11 +74,15 @@ function DialogWrapper({ open, handleClose, children }) {
         }}
       >
         <Container disableGutters className='flexColumn' sx={{ gap: "1.5rem" }}>
-          <FormContextProvider>{children}</FormContextProvider>
+          <FormContextProvider>
+            {children}
+            {/* {dialogContent[button.dialogVariant]} */}
+            {/* <SignUpAuthentication dialogOpen={open} handleClose={handleClose} /> */}
+          </FormContextProvider>
         </Container>
       </Dialog>
     </>
   );
 }
 
-export default DialogWrapper;
+export default AuthenticationDialog;

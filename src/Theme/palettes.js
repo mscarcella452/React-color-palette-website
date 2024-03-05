@@ -4,12 +4,17 @@ const greyMid = "#ebebeb";
 const lightBlue = "#3d8af7";
 const midRed = "#c70039";
 
+const navbar = { nav: "#2d2c5c", menu: "#393486" };
+
 const colors = {
-  primary: "#F3E0D7",
-  secondary: "#D7E1EB",
+  // primary: "#F3E0D7",
+  primary: "#393486",
+  // secondary: "#D7E1EB",
+  secondary: "#FFC66C",
   // info: "#EA552A",
   info: "#6C64FF",
-  highlight: "#d7f3e0",
+  // highlight: "#d7f3e0",
+  // highlight: "#FFC66C",
   background: {
     primary: "#F8F8F8",
     secondary: "#ECECEC",
@@ -44,10 +49,10 @@ const palettes = {
     main: colors.info,
     // fontColor:
   },
-  highlight: {
-    main: colors.highlight,
-    // fontColor:
-  },
+  // highlight: {
+  //   main: colors.highlight,
+  //   // fontColor:
+  // },
 };
 
 export { palettes };
