@@ -1,18 +1,13 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { UIContext } from "../../Context/AppContext";
+import { md, sm, mobileLandscape } from "../../Theme/mediaQueries";
 import { Paper, Box, IconButton, useMediaQuery } from "@mui/material";
 import { NavLink, CurrentUserAvatar } from "./NavComponents/HelperComponents";
 import AnimatedHamburgerIcon from "../../Helpers/HelperComponents/AnimatedHamburgerIcon";
 import HamburgerMenu from "./NavComponents/HamburgerMenu";
 import FormDialog from "../AuthenticationForm/FormDialog";
+import { navLinksData } from "./NavbarData";
 import "./Navbar.css";
-import { md, sm, mobileLandscape } from "../../Theme/mediaQueries";
-
-const navLinks = [
-  { text: "Create", to: "/createPalette" },
-  { text: "Your Palettes", to: "/userPalettes" },
-  { text: "Templates", to: "/templatePalettes" },
-];
 
 function Navbar() {
   const { currentUser } = useContext(UIContext);
@@ -63,7 +58,6 @@ function Navbar() {
 
           md: "primary.dark",
         },
-
         transition: "all 1s linear",
       }}
     >
@@ -71,10 +65,18 @@ function Navbar() {
         className='navbar flexRow'
         sx={{
           padding: { xxs: "10px 1.5rem", sm: "10px 2rem" },
-          // backgroundColor: "primary.main",
+          justifyContent: "space-between",
         }}
       >
-        <Box className='logo_wrapper flexRow' sx={{ gap: 2 }}>
+        <Box
+          className='logo_wrapper flexRow'
+          sx={{
+            gap: !lockMenu && 2,
+            // border: 1,
+            width: lockMenu && 225,
+            flex: !lockMenu && 1,
+          }}
+        >
           {!lockMenu && (
             <IconButton
               onClick={handleClick}
@@ -93,8 +95,11 @@ function Navbar() {
           </NavLink>
         </Box>
         {lockMenu && (
-          <Box className='navLinks_wrapper flexRow'>
-            {navLinks.map((navLink, index) => (
+          <Box
+            className='navLinks_wrapper flexRow'
+            sx={{ border: 0, width: { xxs: 475, lg: 625 } }}
+          >
+            {navLinksData.map((navLink, index) => (
               <NavLink key={index} to={navLink.to} variant='subHeading2'>
                 {navLink.text}
               </NavLink>

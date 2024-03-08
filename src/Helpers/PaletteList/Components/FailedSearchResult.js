@@ -28,8 +28,8 @@ function FailedSearchResult({ variant = "failedSearch", onClick }) {
         sx={{
           width: { xxs: 1, mobile: "200px" },
           border: 1,
-          borderColor: "background.secondary",
-          backgroundColor: "background.primary",
+          // borderColor: "background.secondary",
+          // backgroundColor: "background.primary",
           // color: "fontColor.primary",
           marginTop: 2,
         }}
@@ -51,7 +51,7 @@ const alertMessage = {
   logIn: {
     title: "No Results",
     message: "You must login",
-    btnText: "Create A Palette",
+    btnText: "Log In",
   },
   emptyPalettes: {
     title: "No Results",

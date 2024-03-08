@@ -27,14 +27,14 @@ function FeatureContent({ content }) {
       <Typography
         variant='p'
         textAlign='left'
-        sx={{ width: 1, fontWeight: 700, color: "info.main" }}
+        sx={{ width: 1, fontWeight: 700, color: "primary.main" }}
       >
         {heading}
       </Typography>
       <Typography
         variant='heading3'
         textAlign='left'
-        sx={{ width: 1, fontWeight: 700, color: "fontColor.primary" }}
+        sx={{ width: 1, fontWeight: 700, color: "primary.dark" }}
       >
         {title}
       </Typography>
@@ -49,11 +49,11 @@ function FeatureContent({ content }) {
       <Grid container columns={bulletPoints.length / 2} sx={{ width: 1 }}>
         {bulletPoints.map(bulletPoint => (
           <Grid xxs={1} className='flexRow' sx={{ padding: 1, gap: 1 }}>
-            <Typography sx={{ color: "info.main" }}>&#10003;</Typography>
+            <Typography sx={{ color: "primary.main" }}>&#10003;</Typography>
             <Typography
               variant='p'
               textAlign='left'
-              sx={{ width: 1, fontWeight: 700, color: "info.main" }}
+              sx={{ width: 1, fontWeight: 700, color: "primary.main" }}
             >
               {bulletPoint}
             </Typography>

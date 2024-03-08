@@ -25,7 +25,7 @@ function LogInForm({ handleClose }) {
     // set stored log in credentials from remember me
     emailRef.current.value = storedLogIn["email"];
     passwordRef.current.value = storedLogIn["password"];
-  });
+  }, []);
 
   const handleSubmit = () => {
     // Validate fields and update error states

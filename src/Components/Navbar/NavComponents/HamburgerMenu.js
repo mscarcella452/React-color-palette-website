@@ -1,35 +1,11 @@
 import { useContext } from "react";
 import { UIContext, UIDispatchContext } from "../../../Context/AppContext";
 import { Box, Typography, Button } from "@mui/material";
-import FormDialog from "../../AuthenticationForm/FormDialog";
 import { mobileLandscape } from "../../../Theme/mediaQueries";
-import { LiaSwatchbookSolid } from "react-icons/lia";
-import { MdOutlineCreate, MdAccountCircle } from "react-icons/md";
-import { IoHomeOutline, IoBookmarksOutline } from "react-icons/io5";
+import { MdAccountCircle } from "react-icons/md";
+import FormDialog from "../../AuthenticationForm/FormDialog";
 import { NavLink } from "./HelperComponents";
-
-const navLinks = [
-  {
-    text: "Home",
-    to: "/",
-    icon: <IoHomeOutline className='navbar_icon' />,
-  },
-  {
-    text: "Create",
-    to: "/createPalette",
-    icon: <MdOutlineCreate className='navbar_icon' />,
-  },
-  {
-    text: "Your Palettes",
-    to: "/userPalettes",
-    icon: <IoBookmarksOutline className='navbar_icon' />,
-  },
-  {
-    text: "Templates",
-    to: "/templatePalettes",
-    icon: <LiaSwatchbookSolid className='navbar_icon' />,
-  },
-];
+import { hamburgerNavLinksData } from "../NavbarData";
 
 function HamburgerMenu({ hamburgerMenuRef }) {
   const { currentUser } = useContext(UIContext);
@@ -125,7 +101,7 @@ function HamburgerMenu({ hamburgerMenuRef }) {
           // border: 1,
         }}
       >
-        {navLinks.map((navLink, index) => (
+        {hamburgerNavLinksData.map((navLink, index) => (
           <Box
             className='flexRow'
             key={index}

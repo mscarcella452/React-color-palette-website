@@ -15,36 +15,34 @@ import { sm, mobileLandscape } from "../../../Theme/mediaQueries";
 // NAVLINK  ---------------------------------
 export function NavLink({ to = "/", variant = "label", icon, children }) {
   return (
-    <Box
-      sx={{
-        "& .logo_alternate": {
-          color: "info.main",
-        },
-        "&:hover .link_typography": { color: "info.main" },
-      }}
+    <Link
+      className='navbar_link flexRow'
+      to={to}
+      style={{ gap: icon && "1rem", width: "fit-content" }}
     >
-      <Link
-        className='navbar_link flexRow'
-        to={to}
-        style={{ gap: icon && "1rem", width: "fit-content" }}
+      {icon && (
+        <Box className='flexRow' sx={{ color: "info.main" }}>
+          {icon}
+        </Box>
+      )}
+      <Typography
+        className='link_typography'
+        variant={variant}
+        sx={{
+          color: "background.secondary",
+          fontWeight: variant === "subHeading2" ? 700 : 500,
+
+          "& .logo_alternate": {
+            color: "info.main",
+            fontWeight: 700,
+          },
+
+          "&:hover": { color: "info.main" },
+        }}
       >
-        {icon && (
-          <Box className='flexRow' sx={{ color: "info.main" }}>
-            {icon}
-          </Box>
-        )}
-        <Typography
-          className='link_typography'
-          variant={variant}
-          sx={{
-            color: "background.secondary",
-            fontWeight: variant === "subHeading1" ? 700 : 500,
-          }}
-        >
-          {children}
-        </Typography>
-      </Link>
-    </Box>
+        {children}
+      </Typography>
+    </Link>
   );
 }
 

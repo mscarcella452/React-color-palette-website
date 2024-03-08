@@ -12,7 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { xs } from "../../../Theme/mediaQueries";
 
 const Transition = forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction='right' ref={ref} {...props} />;
 });
 
 function AccountDialog({ open, handleClose, children }) {
@@ -22,6 +22,7 @@ function AccountDialog({ open, handleClose, children }) {
     <Dialog
       open={open}
       TransitionComponent={Transition}
+      TransitionProps={{ timeout: 500 }} // Adjust timeout as needed
       // keepMounted
       onClose={handleClose}
       maxWidth='md' // Adjust as needed
@@ -89,7 +90,6 @@ function AccountDialog({ open, handleClose, children }) {
             justifyContent: "space-around",
             minHeight: 500,
             height: "fit-content",
-            border: 1,
             padding: { xxs: 2, xs: 4 },
           }}
         >

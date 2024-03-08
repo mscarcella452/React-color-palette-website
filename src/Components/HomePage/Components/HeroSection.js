@@ -14,6 +14,15 @@ import {
   mobilePortrait,
   iphone4,
 } from "../../../Theme/mediaQueries";
+import FormDialog from "../../AuthenticationForm/FormDialog";
+import HomeLogo from "../HomeLogo.png";
+
+const logo =
+  "https://i.pinimg.com/originals/63/f9/d1/63f9d1256f25a77e6c94c90c097ad96a.png";
+const logo3 =
+  "https://static.vecteezy.com/system/resources/previews/001/192/275/original/rainbow-dot-color-swatches-png.png";
+const logo2 =
+  "http://clipart-library.com/images_k/paint-clipart-transparent/paint-clipart-transparent-19.png";
 
 function HeroSection() {
   const largerScreen = useMediaQuery(md);
@@ -22,18 +31,8 @@ function HeroSection() {
       className='flexRow'
       sx={{
         height: "calc(100vh - 70px)",
-
-        // marginTop: "70px",
-
-        // backgroundColor: "primary.main",
-        // backgroundColor: "info.dark",
-        // backgroundColor: "#393486",
         backgroundColor: "primary.dark",
         // backgroundColor: "primary.main",
-
-        // background:
-        //   "linear-gradient(to right, #FAF3EF, #F7EBE4, #F3E0D7, #E8D5CA, #D3BFAF)",
-
         padding: { xxs: "2rem 1rem", xs: "2rem 1.5rem", mobile: "2rem" },
 
         [mobileLandscape]: {
@@ -47,14 +46,17 @@ function HeroSection() {
       }}
     >
       <Container
-        className='flexColumn'
         maxWidth={true}
         sx={{
           width: 1,
           height: 1,
           // border: 1,
-          maxWidth: "800px",
-          gap: { xxs: "2rem", xs: "3rem" },
+          maxWidth: "lg",
+          // border: 1,
+          display: "grid",
+          gridTemplateColumns: { xxs: "1fr", md: ".75fr 1fr", lg: ".6fr 1fr" },
+          gap: 8,
+
           // [mobilePortrait]: {
           //   // gap: "1rem",
           //   // justifyContent: "space-around",
@@ -63,45 +65,95 @@ function HeroSection() {
           // },
         }}
       >
-        <Typography
-          variant='heading1'
-          textAlign='center'
-          color='secondary.main'
-        >
-          Life's too short for boring colors!
-        </Typography>
-        <Typography
-          variant='subHeading1'
-          color='#fff'
-          sx={{
-            fontSize: { xxs: "16px", xs: "18px", mobile: "20px", sm: "24px" },
-            lineHeight: { xxs: "28px", xs: "30px", mobile: "32px", sm: "36px" },
-          }}
-        >
-          Mix, match, and perfect your ideal color palette for your next
-          project. Color your world your way!
-        </Typography>
         <Box
-          className='flexRow'
           sx={{
+            // border: 1,
+            aspectRatio: 1,
             width: 1,
-            gap: { xxs: "1rem", xs: "1.5rem", mobile: "1rem" },
-            flexDirection: { xxs: "column", sm: "row" },
+            order: -1,
+            display: { xxs: "none", md: "block" },
+
+            backgroundImage: `url(${logo3})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+
+            position: "relative",
+            "&:after": {
+              // content: "''",
+              position: "absolute",
+              top: 100,
+              left: 100,
+              right: 100,
+              bottom: 100,
+              backgroundImage: `url(${logo3})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            },
+          }}
+        ></Box>
+        <Box
+          className='flexColumn'
+          sx={{
+            height: 1,
+            width: 1,
+            gap: { xxs: "2rem", xs: "3rem" },
+            // border: 1,
           }}
         >
-          <Button variant='primary' sx={{ width: { xxs: 1, mobile: 400 } }}>
-            Create A Free Account
-          </Button>
-          {/* <Button
-            variant='secondary'
+          <Typography
+            variant='heading3'
+            color='#fff'
             sx={{
-              width: { xxs: 1, sm: 0.75 },
-              border: { xxs: 0, sm: 2 },
-              borderColor: { xxs: "info.main", sm: "info.main" },
+              textAlign: { xxs: "center", md: "left" },
+              fontWeight: 400,
+              fontSize: { xxs: "50px", lg: "70px" },
+              lineHeight: { xxs: "70px", lg: "80px" },
+              "& .emphasize": {
+                color: "secondary.main",
+                textTransform: "uppercase",
+                fontWeight: 700,
+              },
             }}
           >
-            Log In
-          </Button> */}
+            Life's too short for{" "}
+            <span className='emphasize'>boring colors</span>!
+          </Typography>
+          <Typography
+            variant='subHeading2'
+            color='background.primary'
+            sx={{
+              textAlign: { xxs: "center", md: "left" },
+
+              fontWeight: 500,
+              // display: { xxs: "block", md: "none", lg: "block" },
+              // fontSize: { xxs: "16px", xs: "18px", mobile: "20px", sm: "24px" },
+              // lineHeight: {
+              //   xxs: "28px",
+              //   xs: "30px",
+              //   mobile: "32px",
+              //   sm: "36px",
+              // },
+            }}
+          >
+            Mix, match, and perfect your ideal color palette for your next
+            project. Color your world your way!
+          </Typography>
+          <Box
+            className='flexRow'
+            sx={{
+              width: 1,
+              gap: { xxs: "1rem", xs: "1.5rem", mobile: "1rem" },
+              flexDirection: { xxs: "column", sm: "row" },
+              justifyContent: { xxs: "center", md: "flex-start" },
+            }}
+          >
+            <FormDialog
+              variant='Sign Up'
+              buttonLabel={" Create A Free Account"}
+            />
+          </Box>
         </Box>
       </Container>
     </Paper>

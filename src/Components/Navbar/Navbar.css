@@ -8,7 +8,7 @@
 
 .navbar {
   height: 70px;
-  gap: 1.5rem;
+  /* gap: 1.5rem; */
 }
 
 .logo_wrapper,
@@ -20,10 +20,11 @@
 
 .logo_wrapper {
   justify-content: flex-start;
-  flex: 1;
+  /* flex: 1; */
 }
 .navLinks_wrapper {
-  width: 500px;
+  /* width: 500px; */
+
   justify-content: space-around;
 }
 

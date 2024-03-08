@@ -2,26 +2,37 @@
 import { Paper, Container, Box, Typography } from "@mui/material";
 
 const OverviewContent = [
-  "From concept to creation, our platform empowers you to design beyond any color boundaries!",
-  "Unleash your imagination and design with confidence, armed with a palette that is uniquely yours.",
+  <>
+    From concept to creation, our platform empowers you to{" "}
+    <span className='emphasize'>design beyond any color boundaries</span>!
+  </>,
+  <>
+    Unleash your imagination and design with confidence, armed with a{" "}
+    <span className='emphasize'>palette that is uniquely yours</span>.
+  </>,
 ];
 
 function SiteOverview({ contentIndex }) {
   return (
     <Paper
       variant='featurePaper'
-      sx={{ position: "relative", backgroundColor: "fontColor.secondary" }}
+      sx={{ position: "relative", backgroundColor: "primary.dark" }}
     >
       <Container className='flexRow' sx={{ gap: "4rem" }}>
         <Typography
-          variant='subHeading1'
+          variant='heading2'
           sx={{
             textAlign: "center",
             lineHeight: { xxs: 1.5 },
-            // fontWeight: 600,
-            maxWidth: "725px",
-
-            color: "background.primary",
+            fontWeight: 300,
+            maxWidth: "md",
+            // maxWidth: "725px",
+            color: "background.secondary",
+            "& .emphasize": {
+              color: "secondary.main",
+              textTransform: "uppercase",
+              fontWeight: 700,
+            },
           }}
         >
           {OverviewContent[contentIndex]}

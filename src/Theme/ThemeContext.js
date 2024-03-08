@@ -236,7 +236,8 @@ const appTheme = createTheme({
         // Name of the slot
         root: {
           // color: palettes.fontColor.primary,
-          fontFamily: fonts.Poppins,
+          // fontFamily: fonts.Poppins,
+          fontFamily: fonts.Montserrat,
         },
       },
       defaultProps: {

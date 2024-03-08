@@ -1,5 +1,4 @@
 import React, { useReducer, createContext, useCallback } from "react";
-import { colorPalettes } from "../Components/PalettePages/SeedColors";
 
 import { userPalettes } from "../Palettes/userPalettes";
 
