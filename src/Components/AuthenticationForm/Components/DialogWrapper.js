@@ -101,13 +101,3 @@ function AccountDialog({ open, handleClose, children }) {
 }
 
 export default AccountDialog;
-
-const btnVariantData = {
-  "Sign Up": "primary",
-  "Log In": "secondary",
-};
-
-const toggleVariantData = {
-  "Sign Up": { prompt: "Already have an account?", btnTitle: "Log In" },
-  "Log In": { prompt: "Don't have an account?", btnTitle: "Sign Up" },
-};

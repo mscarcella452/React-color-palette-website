@@ -28,9 +28,9 @@ function Navbar() {
   }, [lockMenu, showMenu, setShowMenu]);
 
   useEffect(() => {
+    const hamburgerMenu = hamburgerMenuRef.current;
     const handleHeightChange = () => {
-      const height =
-        hamburgerMenuRef.current && hamburgerMenuRef.current.offsetHeight;
+      const height = hamburgerMenu && hamburgerMenu.offsetHeight;
       if (navbarRef.current) {
         navbarRef.current.style.height = showMenu ? height + 70 + "px" : "70px";
       }
@@ -39,13 +39,13 @@ function Navbar() {
     handleHeightChange(); // Initial height calculation
 
     const resizeObserver = new ResizeObserver(handleHeightChange);
-    if (hamburgerMenuRef.current) {
-      resizeObserver.observe(hamburgerMenuRef.current);
+    if (hamburgerMenu) {
+      resizeObserver.observe(hamburgerMenu);
     }
 
     return () => {
-      if (hamburgerMenuRef.current) {
-        resizeObserver.unobserve(hamburgerMenuRef.current);
+      if (hamburgerMenu) {
+        resizeObserver.unobserve(hamburgerMenu);
       }
     };
   }, [hamburgerMenuRef, navbarRef, showMenu]);
@@ -120,19 +120,6 @@ function Navbar() {
                 <FormDialog variant='Log In' showIcon={!showSignUpDialog} />
               </>
             )}
-            {/* {currentUser !== null ? (
-              <CurrentUserAvatar
-                username={currentUser.username}
-                showMenu={showMenu}
-              />
-            ) : hideAuthenticationIcon ? (
-              <>
-                <FormDialog variant='Sign Up' />
-                <FormDialog variant='Log In' />
-              </>
-            ) : (
-              <FormDialog variant='Icon' />
-            )} */}
           </>
         </Box>
       </Box>
