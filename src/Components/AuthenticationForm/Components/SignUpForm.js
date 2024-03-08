@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { UIDispatchContext } from "../../Context/AppContext";
-import { useToggle } from "../../Hooks/CustomHooks";
+import { UIDispatchContext } from "../../../Context/AppContext";
+import { useToggle } from "../../../Hooks/CustomHooks";
 import {
   useUsernameInput,
   useEmailInput,
   usePasswordInput,
-} from "./InputCustomHooks";
+} from "../Hooks/InputCustomHooks";
 import { Typography, Button, Box, IconButton } from "@mui/material";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";

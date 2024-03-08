@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UIContext, UIDispatchContext } from "../../../Context/AppContext";
 import { Box, Typography, Button } from "@mui/material";
-import FormDialog from "./FormDialog";
+import FormDialog from "../../AuthenticationForm/FormDialog";
 import { mobileLandscape } from "../../../Theme/mediaQueries";
 import { LiaSwatchbookSolid } from "react-icons/lia";
 import { MdOutlineCreate, MdAccountCircle } from "react-icons/md";

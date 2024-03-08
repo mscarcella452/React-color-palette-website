@@ -1,14 +1,12 @@
 import { useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { Box, Container, Typography, Paper } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
 import SearchBar from "./PaletteComponents/SearchBar";
-import { colorPalettes } from "./SeedColors";
 import PaletteGrid from "./PaletteComponents/PaletteGrid";
 import { UIContext } from "../../Context/AppContext";
 import AnnouncementIcon from "@mui/icons-material/Announcement";
-import AuthenticationDialog from "../Navbar/AthenticationDialog/AuthenticationDialog";
-import FormDialog from "../Navbar/AthenticationDialog/FormDialog";
+import FormDialog from "../AuthenticationForm/FormDialog";
 
 const navButtons = [
   { name: "Sign Up", btnVariant: "primary", dialogVariant: "signUp" },
