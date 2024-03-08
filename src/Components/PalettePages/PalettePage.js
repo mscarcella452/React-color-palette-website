@@ -22,7 +22,7 @@ function PalettePage() {
   // save current user as index in users instead of object with all that info. still need signed in tho, same thing for remember me
   // const { signedIn, palettes } = currentUser;
   return (
-    <Paper variant='paperPage'>
+    <Paper variant='pagePaper'>
       <Navbar />
       <Box
         className='flexColumn'

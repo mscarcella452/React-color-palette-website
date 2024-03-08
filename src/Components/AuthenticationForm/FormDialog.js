@@ -1,4 +1,4 @@
-import { useState, forwardRef, useRef, createRef } from "react";
+import { useState, forwardRef } from "react";
 
 import {
   Button,
@@ -9,24 +9,16 @@ import {
   Box,
   DialogContent,
   Typography,
-  Container,
   useMediaQuery,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-import AuthenticationForm from "./AuthenticationForm";
-
 import LoginIcon from "@mui/icons-material/Login";
-import { CiLogin } from "react-icons/ci";
-
-import CircularProgress from "@mui/material/CircularProgress";
 
 import SignUpForm from "./SignUpForm";
 import LogInForm from "./LogInForm";
 
-import FormInput from "./FormInput";
-import { xs } from "../../../Theme/mediaQueries";
-const savedUser = { email: "dallenSperms@gmail.com", password: "ReactMan12" };
+import { xs } from "../../Theme/mediaQueries";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;

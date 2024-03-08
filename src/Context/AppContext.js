@@ -45,11 +45,12 @@ const appReducer = (app, action) => {
       // const index = findUserIndex(action.userInfo.email, app.users);
       // console.log(action.email);
 
-      const user = filterUser(action.userInfo.email, app.users)[0];
+      // const user = filterUser(action.userInfo.email, app.users)[0];
 
       return {
         ...app,
-        currentUser: { username: user.username, palettes: user.palettes },
+        // currentUser: { username: user.username, palettes: user.palettes },
+        currentUser: action.userInfo,
         // currentUserIndex: index,
         storedLogIn: action.rememberMe
           ? { email: action.userInfo.email, password: action.userInfo.password }

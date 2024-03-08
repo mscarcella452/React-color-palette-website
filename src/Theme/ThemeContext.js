@@ -19,6 +19,20 @@ export const fonts = {
   Poppins: " 'Poppins', sans-serif",
 };
 
+const typographyVariants = {
+  label: {
+    // fontFamily: fonts.Poppins,
+    fontWeight: 400,
+    fontSize: "14px",
+    [xs]: { fontSize: "16px" },
+    [mobile]: { fontSize: "18px" },
+    [mobileLandscape]: {
+      [xs]: { fontSize: "16px" },
+      // [sm]: { fontSize: "16px" },
+    },
+  },
+};
+
 const appTheme = createTheme({
   palette: palettes,
 
@@ -126,13 +140,13 @@ const appTheme = createTheme({
           justifyContent: "center",
           alignItems: "center",
 
-          fontWeight: 500,
           fontSize: "14px",
           height: "35px",
+          // ...typographyVariants.label,
           [xs]: { height: "40px" },
           [sm]: { fontSize: "16px" },
+          fontWeight: 600,
 
-          fontFamily: fonts.Poppins,
           "&:hover": {
             opacity: 0.8,
           },
@@ -144,8 +158,10 @@ const appTheme = createTheme({
           style: {
             backgroundColor: palettes.info.main,
             color: palettes.background.secondary,
-            border: "solid 1px",
-            borderColor: palettes.info.main,
+
+            "&:hover": {
+              backgroundColor: palettes.info.main,
+            },
 
             // [lg]: { padding: "1rem" },
           },
@@ -153,8 +169,29 @@ const appTheme = createTheme({
         {
           props: { variant: "secondary" },
           style: {
+            color: palettes.background.secondary,
+
+            backgroundColor: "#4B46B2",
+            // color: palettes.background.primary,
+
+            // border: "solid 1px",
+            borderColor: "#27245D",
+
+            "&:hover": {
+              backgroundColor: "#4B46B2",
+            },
+          },
+        },
+        {
+          props: { variant: "label" },
+          style: {
             color: palettes.info.main,
-            border: "solid 1px",
+            textTransform: "capitalize",
+            "&:hover": {
+              opacity: 1,
+              textDecoration: "underline",
+              background: "transparent",
+            },
           },
         },
       ],
@@ -189,13 +226,7 @@ const appTheme = createTheme({
       variants: [
         {
           props: { variant: "vertical" },
-          style: {
-            backgroundColor: palettes.info.main,
-            width: "2.5px",
-            height: "100%",
-            border: 0,
-            borderRadius: "2.5px",
-          },
+          style: typographyVariants.label,
         },
       ],
     },
@@ -222,6 +253,12 @@ const appTheme = createTheme({
           tinyLabel: "p",
         },
       },
+      variants: [
+        {
+          props: { variant: "label" },
+          style: { fontSize: typographyVariants.label.fontSize },
+        },
+      ],
     },
   },
 });
@@ -325,19 +362,20 @@ appTheme.typography.subHeading2 = {
 //   lineHeight: "30px",
 // };
 
-appTheme.typography.label = {
-  // fontFamily: fonts.Poppins,
-  fontWeight: 400,
-  // color: "navy",
-  fontSize: "14px",
-  lineHeight: "30px",
-  [xs]: { fontSize: "16px" },
-  [mobile]: { fontSize: "18px" },
-  [mobileLandscape]: {
-    [xs]: { fontSize: "16px" },
-    // [sm]: { fontSize: "16px" },
-  },
-};
+// appTheme.typography.label = {
+//   // fontFamily: fonts.Poppins,
+//   fontWeight: 400,
+//   // color: "navy",
+//   fontSize: "14px",
+//   lineHeight: "30px",
+
+//   [xs]: { fontSize: "16px" },
+//   [mobile]: { fontSize: "18px" },
+//   [mobileLandscape]: {
+//     [xs]: { fontSize: "16px" },
+//     // [sm]: { fontSize: "16px" },
+//   },
+// };
 
 appTheme.typography.tinyLabel = {
   fontWeight: 700,

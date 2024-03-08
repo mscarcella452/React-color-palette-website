@@ -19,17 +19,6 @@ const savedUser = { email: "dallenSperms@gmail.com", password: "ReactMan12" };
 function FormInput({ inputName, error, forwardedRef }) {
   const [hidePassword, toggleHidePassword] = useToggle(true);
 
-  // useEffect(() => {
-  //   if (rememberMe) {
-  //     if (inputName === "email" && forwardedRef.current) {
-  //       forwardedRef.current.value = savedUser.email;
-  //     }
-  //     if (inputName === "password" && forwardedRef.current) {
-  //       forwardedRef.current.value = savedUser.password;
-  //     }
-  //   }
-  // }, []);
-
   return (
     <Box sx={{ width: 1 }}>
       {/* <Typography
@@ -52,7 +41,12 @@ function FormInput({ inputName, error, forwardedRef }) {
         name={inputName}
         //   onChange={handleInputChange}
         // error={error || submitError.status}
+        // error={error.length > 0}
         error={error.length > 0}
+        // error={
+        //   error &&
+        //   Object.values(error).some(errorMessage => errorMessage !== "")
+        // }
         helperText={error}
         size='small'
         type={inputName === "password" && hidePassword ? "password" : null}

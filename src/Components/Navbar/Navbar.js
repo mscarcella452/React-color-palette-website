@@ -4,7 +4,7 @@ import { Paper, Box, IconButton, useMediaQuery } from "@mui/material";
 import { NavLink, CurrentUserAvatar } from "./NavComponents/HelperComponents";
 import AnimatedHamburgerIcon from "../../Helpers/HelperComponents/AnimatedHamburgerIcon";
 import HamburgerMenu from "./NavComponents/HamburgerMenu";
-import FormDialog from "./NavComponents/FormDialog";
+import FormDialog from "../AuthenticationForm/FormDialog";
 import "./Navbar.css";
 import { md, sm, mobileLandscape } from "../../Theme/mediaQueries";
 
@@ -18,9 +18,7 @@ function Navbar() {
   const { currentUser } = useContext(UIContext);
   const [showMenu, setShowMenu] = useState(false);
   const lockMenu = useMediaQuery(md);
-  const hideAuthenticationIcon = useMediaQuery(sm || mobileLandscape);
-
-  console.log(hideAuthenticationIcon);
+  const showSignUpDialog = useMediaQuery(sm || mobileLandscape);
 
   const hamburgerMenuRef = useRef();
   const navbarRef = useRef();
@@ -116,6 +114,17 @@ function Navbar() {
                 username={currentUser.username}
                 showMenu={showMenu}
               />
+            ) : (
+              <>
+                {showSignUpDialog && <FormDialog variant='Sign Up' />}
+                <FormDialog variant='Log In' showIcon={!showSignUpDialog} />
+              </>
+            )}
+            {/* {currentUser !== null ? (
+              <CurrentUserAvatar
+                username={currentUser.username}
+                showMenu={showMenu}
+              />
             ) : hideAuthenticationIcon ? (
               <>
                 <FormDialog variant='Sign Up' />
@@ -123,7 +132,7 @@ function Navbar() {
               </>
             ) : (
               <FormDialog variant='Icon' />
-            )}
+            )} */}
           </>
         </Box>
       </Box>

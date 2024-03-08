@@ -1,13 +1,29 @@
-import { useState, useRef, createRef, useContext, useEffect } from "react";
+import {
+  useState,
+  useRef,
+  createRef,
+  useContext,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import { useToggle } from "../../../Hooks/CustomHooks";
 
 import { Typography, Button, Box, IconButton, TextField } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 
 import { UIContext, UIDispatchContext } from "../../../Context/AppContext";
+import { FormContext, FormDispatchContext } from "../../../Context/FormContext";
+
+import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import DialogWrapper from "../AthenticationDialog/DialogWrapper";
 import FormInput from "./FormInput";
+
+import UserPalettesPage from "../../UserPalettesPage/UserPalettesPage";
 import {
   validateUsername,
   validateEmail,
@@ -15,96 +31,100 @@ import {
 } from "./ValidatorFunctions";
 import { mobileLandscape } from "../../../Theme/mediaQueries";
 
+const savedUser = { email: "dallenSperms@gmail.com", password: "ReactMan12" };
+
 const useFetchCurrentUser = () => {
   const app = useContext(UIContext);
   return app.users.find(user => user.username === app.currentUser.username);
 };
 
-const useUsernameValidator = () => {
-  const [error, setError] = useState("");
-  const usernameRef = useRef(null);
-
-  const validateUsername = () => {
-    const username = usernameRef.current.value.trim();
-
-    if (!username) {
-      setError("Username is required");
-    } else {
-      // No whitespace
-      if (/\s/.test(username)) {
-        setError("Username may not contain whitespace.");
-      }
-      // Length requirement
-      if (username.length < 3 || username.length > 10) {
-        setError("Username must be between 3 and 10 characters.");
-      }
-      // Character set
-      if (!/^[a-zA-Z0-9_-]+$/.test(username)) {
-        setError(
-          "Username may only contain alphanumeric characters, underscores, or hyphens."
-        );
-      }
-      // If no errors found
-      setError(false);
-    }
-  };
-
-  return { error, validateUsername, usernameRef };
-};
-
 function AuthenticationForm({ initialVariant, handleClose }) {
   const [rememberMe, toggleRememberMe] = useToggle(true);
   const [variant, setVariant] = useState(initialVariant);
-  const { storedLogIn } = useContext(UIContext);
+  const [loading, setLoading] = useState(false);
+  const app = useContext(UIContext);
   const UIDispatch = useContext(UIDispatchContext);
 
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!make two forms with customhooks for each input. then you dont have to worry about all this garbage. can also useContext in customform to check for availaiblity
-  // const { usernameError, validateUsername, usernameRef } = useUsernameValidator();
-  // make it a form -->
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   validateUsername();
-  //   validateEmail();
-  //   validatePassword();
+  const inputErrors = formData[variant].inputs.reduce((errors, input) => {
+    errors[input] = "";
+    return errors;
+  }, {});
 
-  // };
+  const [errors, setErrors] = useState(inputErrors);
 
-  const [errors, setErrors] = useState({});
-  // const inputRefs = useRef([]);
-  const inputRefs = useRef(formData[variant].inputs.map(() => createRef()));
+  // const inputRefs = useRef(formData[variant].inputs.map(() => createRef()));
+  const inputRefs = useRef([]);
 
   useEffect(() => {
-    // Update inputRefs and errors when variant changes
+    // Clear input refs when variant changes
+    // const inputErrors = formData[variant].inputs.reduce((errors, input) => {
+    //   errors[input] = "";
+    //   return errors;
+    // }, {});
 
-    inputRefs.current.forEach(ref => {
-      if (ref.current) {
-        if (variant === "Log In" && ref.current.name !== "username") {
-          // set stored log in credentials from remember me
-          ref.current.value = storedLogIn[ref.current.name];
-        } else ref.current.value = "";
-      }
-    });
+    setErrors(inputErrors);
 
     inputRefs.current = formData[variant].inputs.map(() => createRef());
-
-    setErrors(
-      formData[variant].inputs.reduce((acc, input) => {
-        acc[input] = false;
-        return acc;
-      }, {})
-    );
   }, [variant]);
 
+  // useEffect(() => {
+  //   // Update inputRefs when variant changes
+  //   // inputRefs.forEach(ref => ref.current = "")
+  //   if (inputRefs.current) {
+  //     inputRefs.current.forEach(ref => {
+  //       if (ref.current) {
+  //         ref.current.value = ""; // Clear input value
+  //       }
+  //     });
+  //   }
+  //   // if (inputRefs.current) {
+  //   //   inputRefs.current = formData[variant].inputs.map(() => createRef());
+  //   // }
+  // }, [variant]);
+
+  // const inputRefs = useRef(
+  //   formData[variant].inputs.reduce((acc, _) => {
+  //     acc.push(createRef());
+  //     return acc;
+  //   }, [])
+  // );
+
   const toggleVariants = () => {
-    // to switch between sign up and log in form
+    setLoading(true);
+
+    // if (inputRefs.current) {
+    //   inputRefs.current = formData[variant].inputs.map(() => createRef());
+    // }
+    if (inputRefs.current) {
+      inputRefs.current.forEach(ref => {
+        if (ref.current) {
+          ref.current.value = ""; // Clear input value
+        }
+      });
+    }
+
     setVariant(prevVariant =>
       prevVariant === "Sign Up" ? "Log In" : "Sign Up"
     );
+
+    setTimeout(() => setLoading(false), 1);
   };
+
+  useEffect(() => {
+    if (variant === "Log In") {
+      // set stored log in credentials from remember me
+      const { storedLogIn } = app;
+      inputRefs.current.forEach(ref => {
+        if (ref.current && ref.current.name !== "username") {
+          ref.current.value = storedLogIn[ref.current.name];
+        }
+      });
+    }
+  }, []);
 
   const handleSubmit = () => {
     const isAnyErrorNotEmpty = validationErrors => {
-      return Object.values(validationErrors).some(value => value !== false);
+      return Object.values(validationErrors).some(value => value !== "");
     };
     const validationErrors = {}; // Local object to store validation errors
 
@@ -140,13 +160,36 @@ function AuthenticationForm({ initialVariant, handleClose }) {
       rememberMe: rememberMe,
     });
 
+    // if (variant === "Sign Up") {
+    //   const newUser = {};
+    //   inputRefs.current.forEach(ref => {
+    //     if (ref.current) {
+    //       // SUBMIT FORM VALUES TO LOCAL STORAGE
+    //       newUser[ref.current.name] = ref.current.value;
+    //     }
+    //   });
+
+    //   UIDispatch({ type: "sign_up", newUser: newUser, rememberMe: rememberMe });
+    // }
+
+    // if (variant === "Log In") {
+    //   inputRefs.current.forEach(ref => {
+    //     if (ref.current && ref.current.name === "email") {
+    //       // SUBMIT FORM VALUES TO LOCAL STORAGE
+    //       UIDispatch({
+    //         type: "log_in",
+    //         email: ref.current.value,
+    //       });
+    //     }
+    //   });
+    // }
+
     handleClose();
   };
 
   return (
     <>
       <Typography variant='subHeading1'>{variant}</Typography>
-
       {formData[variant].inputs.map((input, index) => (
         <FormInput
           // key={inputRefs.current[index]}
@@ -157,9 +200,12 @@ function AuthenticationForm({ initialVariant, handleClose }) {
       ))}
 
       {variant === "Log In" && (
-        <Button onClick={toggleVariants} variant='label'>
+        <Typography
+          variant='p'
+          sx={{ width: 1, textAlign: "right", fontSize: "1rem" }}
+        >
           Forgot Password?
-        </Button>
+        </Typography>
       )}
       <Box
         className='flexRow'
@@ -179,8 +225,10 @@ function AuthenticationForm({ initialVariant, handleClose }) {
         <Typography variant='label'>
           {formData[variant].switchTo.prompt}
         </Typography>
-        <Button onClick={toggleVariants} variant='label'>
-          {formData[variant].switchTo.btn}
+        <Button onClick={toggleVariants}>
+          <Typography variant='label'>
+            {formData[variant].switchTo.btn}
+          </Typography>
         </Button>
       </Box>
     </>

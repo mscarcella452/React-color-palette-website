@@ -28,7 +28,7 @@ export const validateUsername = username => {
     // Check if the username is already registered in your database
 
     // If no errors found
-    return "";
+    return false;
   }
 };
 
@@ -53,7 +53,7 @@ export const validateEmail = (email, availabilityValidator) => {
     // }
     // If no errors found
 
-    return "";
+    return false;
   }
 };
 
@@ -78,5 +78,5 @@ export const validatePassword = (password, formVariant) => {
 
   // If no errors found
 
-  return "";
+  return false;
 };
