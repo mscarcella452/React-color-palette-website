@@ -30,42 +30,22 @@ function PaletteFeatures() {
             className='flexColumn'
             sx={{
               height: 1,
-              // border: 1,
-              // borderColor: index === 0 ? "red" : "blue",
-              // background: "lightgrey",
-              gap: "1rem",
 
-              position: "relative",
-              transition: "inherit",
-              // zIndex: showContent ? 10 : 9,
-              // backgroundColor: "background.primary",
-              "&:before": {
-                // content: "''",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundImage: `url(${content.image})`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center center",
-                backgroundColor: "#fff",
-                zIndex: -1,
-                opacity: 0.05,
-              },
+              gap: "1rem",
+              alignItems: "flex-start",
             }}
           >
-            <Box className='flexRow' sx={{ width: 1, gap: "25px" }}>
+            <Box className='flexRow' sx={{ gap: "25px" }}>
               <Typography
                 className='flexRow'
-                variant='subHeading1'
+                variant='subHeading'
                 sx={{
                   height: "40px",
                   width: "45px",
                   // border: "4px solid",
-                  color: "info.main",
-                  borderColor: "info.main",
+                  color: "primary.main",
+                  display: { xxs: "none", sm: "flex" },
+                  // borderColor: "info.main",
 
                   // backgroundColor: "background.primary",
                 }}
@@ -73,11 +53,14 @@ function PaletteFeatures() {
                 {"\u2192"}
               </Typography>
               <Typography
-                variant='subHeading2'
+                variant='subHeading'
                 sx={{
                   lineHeight: 1.5,
-                  fontWeight: 500,
-                  color: "fontColor.primary",
+                  fontWeight: 600,
+                  // width: 1,
+                  textAlign: "left",
+                  // color: "fontColor.primary",
+                  color: "primary.main",
                 }}
               >
                 {content.title}
@@ -85,11 +68,11 @@ function PaletteFeatures() {
             </Box>
 
             <Typography
-              variant='subHeading2'
+              variant='p'
               sx={{
-                fontWeight: 300,
                 color: "fontColor.secondary",
-                paddingLeft: "70px",
+                paddingLeft: { xxs: 0, sm: "70px" },
+                // paddingLeft: "70px",
               }}
             >
               {content.description}

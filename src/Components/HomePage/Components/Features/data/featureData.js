@@ -14,7 +14,12 @@ const bullets = [
 export const featureData = [
   {
     content: {
-      heading: "Craft Your Palette",
+      heading: (
+        <>
+          <span className='emphasize'>Craft</span> Your Palette
+        </>
+      ),
+      // heading: "Craft Your Palette",
       title: "Discover Your Color Signature",
       description:
         "Discover the perfect color combinations for your designs, whether you desire subtle variations, bold contrasts, or harmonious triads.",
@@ -30,7 +35,12 @@ export const featureData = [
   },
   {
     content: {
-      heading: "Store For Later",
+      heading: (
+        <>
+          <span className='emphasize'>Store</span> for later
+        </>
+      ),
+      // heading: "Store For Later",
       title: "Organize Your Inspriation!",
       description:
         "Bookmark your favorite hues with a click, ensuring that your go-to colors are always at your fingertips.",
@@ -46,8 +56,19 @@ export const featureData = [
   },
   {
     content: {
-      heading: "Templates",
-      title: "Need a creative spark?",
+      // heading: (
+      //   <>
+      //     <span className='emphasize'>Checkout</span> Our Pre-Made Templates
+      //   </>
+      // ),
+      // title: "Need a creative spark?",
+      heading: "Pre-made Templates",
+      // title: "Explore Color Harmony",
+      title: (
+        <>
+          Need a <span className='emphasize'>Creative Spark?</span>
+        </>
+      ),
       description: `Check out our collection of 100+ palette templates. Utilize them for inspiration, or simply as is!`,
       bulletPoints: [
         "Endless Choices",
@@ -62,7 +83,12 @@ export const featureData = [
   {
     content: {
       heading: "Helpers",
-      title: "Explore Color Harmony",
+      // title: "Explore Color Harmony",
+      title: (
+        <>
+          Explore Color <span className='emphasize'>Harmony</span>
+        </>
+      ),
       // title: "Color Harmony Explorations",
       description:
         "Unleash your creativity by exploring the perfect color combinations for your designs, whether you seek subtle variations, striking contrasts, or harmonious triads.",

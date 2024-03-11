@@ -22,29 +22,76 @@ function FeatureContent({ content }) {
         height: 1,
         gap: "1.5rem",
         alignItems: "flex-start",
+        backgroundColor: "background.primary",
+        border: 1,
+        borderColor: "background.secondary",
+        borderRadius: "10px",
+        padding: 4,
+
+        position: "relative",
+        // border: 1,
+        zIndex: 1,
+        boxShadow: 2,
+        // "&:before": {
+        //   content: "''",
+        //   position: "absolute",
+        //   top: -40,
+        //   right: -700,
+        //   bottom: -40,
+        //   width: "200vh",
+        //   borderRadius: "0 10px 10px 0",
+        //   backgroundColor: "background.secondary",
+        //   // opacity: 0.25,
+        //   zIndex: -1,
+        // },
       }}
     >
       <Typography
-        variant='p'
+        variant='heading3'
         textAlign='left'
-        sx={{ width: 1, fontWeight: 700, color: "primary.main" }}
+        sx={{
+          fontWeight: 700,
+          color: "primary.main",
+          zIndex: 1,
+          // border: 1,
+          width: 0.75,
+          paddingRight: 2,
+
+          position: "relative",
+          // "&:before": {
+          //   content: "''",
+          //   position: "absolute",
+          //   top: -10,
+          //   right: 0,
+          //   bottom: -10,
+          //   width: "100vh",
+          //   borderRadius: "0 10px 10px 0",
+          //   backgroundColor: "primary.dark",
+          //   zIndex: -1,
+          // },
+        }}
       >
         {heading}
       </Typography>
       <Typography
-        variant='heading3'
+        variant='subHeading3'
         textAlign='left'
-        sx={{ width: 1, fontWeight: 700, color: "primary.dark" }}
+        sx={{ color: "primary.dark", fontWeight: 700, display: "none" }}
+        // sx={{ width: 1, fontWeight: 700, color: "primary.dark" }}
       >
         {title}
       </Typography>
-      <Typography
-        variant='subHeading2'
+      {/* <Typography
+        variant='subHeading3'
         textAlign='left'
-        sx={{ fontWeight: 300, maxWidth: "750px" }}
+        sx={{
+          fontWeight: 500,
+          maxWidth: "750px",
+          // color: "background.secondary",
+        }}
       >
         {description}
-      </Typography>
+      </Typography> */}
 
       <Grid container columns={bulletPoints.length / 2} sx={{ width: 1 }}>
         {bulletPoints.map(bulletPoint => (
@@ -53,7 +100,8 @@ function FeatureContent({ content }) {
             <Typography
               variant='p'
               textAlign='left'
-              sx={{ width: 1, fontWeight: 700, color: "primary.main" }}
+              sx={{ width: 1, fontWeight: 500 }}
+              // sx={{ width: 1, fontWeight: 700, color: "primary.main" }}
             >
               {bulletPoint}
             </Typography>

@@ -41,7 +41,10 @@ const appTheme = createTheme({
   components: {
     MuiPaper: {
       styleOverrides: {
+        // Name of the slot
         root: {
+          // Some CSS
+          // overflow: "hidden",
           borderRadius: 0,
           overflowX: "hidden",
         },
@@ -72,13 +75,31 @@ const appTheme = createTheme({
           props: { variant: "featurePaper" },
           style: {
             width: "100%",
+            // padding: "4rem 2rem",
             gap: "4rem",
             [xxs]: { padding: "3rem 0rem" },
             [xs]: { padding: "4rem 1rem" },
             [mobile]: { padding: "4rem 2rem" },
+            // borderBottom: "1.25px solid",
+            // borderTop: "1.25px solid",
+            // borderColor: "#efefef",
+            // border: "1px solid #333",
             backgroundColor: palettes.background.primary,
           },
         },
+        // {
+        //   props: { variant: "featurePaper" },
+        //   style: {
+        //     display: "flex",
+        //     justifyContent: "center",
+        //     alignItems: "center",
+        //     width: "100%",
+        //     [xxs]: { height: "fit-content", padding: "3rem 1.5rem" },
+        //     [md]: { height: "calc(100vh - 70px)", padding: "3rem 2rem" },
+        //     // padding: "3rem 1.5rem",
+        //     backgroundColor: palettes.background.primary,
+        //   },
+        // },
       ],
     },
     MuiContainer: {
@@ -93,13 +114,23 @@ const appTheme = createTheme({
           // overflow: "hidden",
         },
       },
-      // variants: [
-      //   {
-      //     props: { variant: "" },
-      //     style: {
-      //     },
-      //   },
-      // ],
+      variants: [
+        {
+          props: { variant: "gridContainer" },
+          style: {
+            display: "grid",
+
+            gap: "2rem",
+
+            [xxs]: {
+              gridTemplateColumns: "1fr",
+              gridTemplateRows: "300px auto",
+            },
+            [sm]: { gridTemplateRows: "375px auto" },
+            [md]: { gridTemplateColumns: "1fr .5fr", gridTemplateRows: "1fr" },
+          },
+        },
+      ],
     },
     MuiButton: {
       styleOverrides: {
@@ -187,33 +218,26 @@ const appTheme = createTheme({
       ],
     },
 
+    MuiDivider: {
+      styleOverrides: {
+        // Name of the slot
+        root: {},
+      },
+      variants: [
+        {
+          props: { variant: "vertical" },
+          style: typographyVariants.label,
+        },
+      ],
+    },
+
     MuiTypography: {
       styleOverrides: {
         // Name of the slot
         root: {
           // color: palettes.fontColor.primary,
           // fontFamily: fonts.Poppins,
-          // fontFamily: fonts.Montserrat,
-
-          "& .logo_alternate": {
-            color: palettes.info.main,
-            textTransform: "uppercase",
-            fontWeight: 700,
-          },
-          "& .emphasize": {
-            color: palettes.secondary.main,
-            textTransform: "uppercase",
-            fontWeight: 700,
-          },
-          "& .emphasize_secondary": {
-            color: palettes.primary.main,
-            textTransform: "uppercase",
-            fontWeight: 700,
-          },
-
-          "&:hover": {
-            "&.link_typography": { color: palettes.info.main },
-          },
+          fontFamily: fonts.Montserrat,
         },
       },
       defaultProps: {
@@ -222,60 +246,122 @@ const appTheme = createTheme({
           heading1: "h1",
           heading2: "h2",
           heading3: "h3",
-          subHeading: "h4",
+          subHeading1: "h4",
+          subHeading2: "h5",
+          boldLabel: "p",
           label: "p",
           p: "p",
           tinyLabel: "p",
         },
       },
-      // variants: [
-      //   {
-      //     props: { variant: "label" },
-      //     style: { fontSize: typographyVariants.label.fontSize },
-      //   },
-      // ],
+      variants: [
+        {
+          props: { variant: "label" },
+          style: { fontSize: typographyVariants.label.fontSize },
+        },
+      ],
     },
   },
 });
 
+// appTheme.typography.mainTitle = {
+//   // fontFamily: fonts.Poppins,
+//   fontWeight: 700,
+//   textAlign: "center",
+//   color: "red",
+//   fontSize: "45px",
+//   lineHeight: "55px",
+
+//   [xs]: { fontSize: "55px", lineHeight: "65px", color: "tan" },
+//   [mobile]: { fontSize: "65px", lineHeight: "75px", color: "tan" },
+//   [sm]: { fontSize: "75px", lineHeight: "85px", color: "tan" },
+//   [md]: { fontSize: "80px", lineHeight: "90px", color: "green" },
+
+//   //  PORTRAIT
+//   // [mobilePortrait]: {
+//   //   [appTheme.breakpoints.only("xxs")]: {
+//   //     fontSize: "45px",
+//   //     lineHeight: "55px",
+//   //     color: "blue",
+//   //   },
+//   // },
+// };
+
 appTheme.typography.heading1 = {
-  fontWeight: 500,
-  fontFamily: fonts.Montserrat,
-  color: palettes.background.primary,
+  fontWeight: 700,
+  // color: "blue",
+  // color: "red",
   fontSize: "45px",
-  [iphone4]: { fontSize: "35px" },
-  [mobile]: { fontSize: "45px" },
-  [sm]: { fontSize: "55px" },
-  // [md]: { fontSize: "75px" },
+  lineHeight: "55px",
+
+  [xs]: { fontSize: "55px", lineHeight: "65px" },
+  [mobile]: { fontSize: "65px", lineHeight: "75px" },
+  [sm]: { fontSize: "75px", lineHeight: "85px" },
+  [md]: { fontSize: "80px", lineHeight: "90px" },
+  width: "100%",
 };
+
 appTheme.typography.heading2 = {
-  fontWeight: 400,
-  fontFamily: fonts.Montserrat,
-  color: palettes.background.primary,
-  fontSize: "20px",
-  lineHeight: "45px",
-
-  [mobile]: { fontSize: "25px" },
-  [sm]: { fontSize: "30px" },
-  [lg]: { fontSize: "35px" },
+  fontWeight: 600,
+  // color: "teal",
+  textAlign: "center",
+  fontSize: "50px",
+  lineHeight: "60px",
+  // border: "1px solid",
+  width: "100%",
+  // [xs]: { fontSize: "25px", lineHeight: "35px", color: "green" },
+  // [mobile]: { fontSize: "30px", lineHeight: "36px" },
+  // [lg]: { fontSize: "35px", lineHeight: "40px" },
 };
-
 appTheme.typography.heading3 = {
   fontWeight: 600,
-  fontFamily: fonts.Montserrat,
+  color: "teal",
+  textAlign: "left",
   fontSize: "25px",
-  [iphone4]: { fontSize: "20px" },
+  lineHeight: "30px",
+  // border: "1px solid",
+  width: "100%",
+  // [xs]: { fontSize: "25px", lineHeight: "35px", color: "green" },
+  [mobile]: { fontSize: "30px", lineHeight: "36px" },
+  [lg]: { fontSize: "35px", lineHeight: "40px" },
 };
 
-appTheme.typography.subHeading = {
+appTheme.typography.subHeading1 = {
   fontWeight: 400,
-  fontSize: "18px",
-  lineHeight: 2,
-  color: palettes.background.primary,
-  [xs]: { fontSize: "20px" },
-  [mobile]: { fontSize: "22px" },
-  fontFamily: fonts.Poppins,
+  // color: "#36454F",
+
+  fontSize: "20px",
+  lineHeight: "32px",
+  textAlign: "center",
+
+  // fontSize: { xxs: "16px", xs: "18px", mobile: "22px", sm: "24px" },
+  // lineHeight: { xxs: "26px", xs: "28px", mobile: "32px", sm: "36px" },
+
+  // [xs]: { fontSize: "18px", lineHeight: "28px", color: "green" },
+  [mobile]: { fontSize: "22px", lineHeight: "36px" },
+  [sm]: { fontSize: "26px", lineHeight: "44px" },
+  // [sm]: { fontSize: "24px", lineHeight: "36px" },
+  // [mobile]: { textAlign: "center" },
 };
+
+appTheme.typography.subHeading2 = {
+  fontWeight: 400,
+  textAlign: "left",
+  color: "#36454F",
+  fontSize: "20px",
+  lineHeight: "36px",
+  width: "100%",
+};
+
+// appTheme.typography.boldLabel = {
+//   fontFamily: fonts.Poppins,
+//   fontWeight: 700,
+//   textAlign: "center",
+//   color: palettes.background.primary,
+//   color: "orange",
+//   fontSize: "20px",
+//   lineHeight: "30px",
+// };
 
 // appTheme.typography.label = {
 //   // fontFamily: fonts.Poppins,
@@ -292,22 +378,19 @@ appTheme.typography.subHeading = {
 //   },
 // };
 
-appTheme.typography.label = {
-  fontWeight: 300,
-  fontSize: "20px",
-};
 appTheme.typography.tinyLabel = {
-  fontWeight: 300,
-  fontSize: "12px",
+  fontWeight: 700,
+  // color: "gold",
+  fontSize: "40px",
+  lineHeight: "55px",
 };
 
 appTheme.typography.p = {
   fontWeight: 400,
   textAlign: "left",
-  fontSize: "18px",
-  [mobile]: { fontSize: "20px" },
-  lineHeight: 2,
-  fontFamily: fonts.Montserrat,
+  // color: "indigo",
+  fontSize: "17px",
+  lineHeight: "27px",
 };
 
 export default appTheme;

@@ -24,53 +24,66 @@ const logo3 =
 const logo2 =
   "http://clipart-library.com/images_k/paint-clipart-transparent/paint-clipart-transparent-19.png";
 
+const texture =
+  "https://www.transparenttextures.com/patterns/diagonal-striped-brick.png";
+
 function HeroSection() {
   const largerScreen = useMediaQuery(md);
   return (
     <Paper
       className='flexRow'
+      elevation={0}
       sx={{
-        height: "calc(100vh - 70px)",
         backgroundColor: "primary.dark",
-        // backgroundColor: "primary.main",
-        padding: { xxs: "2rem 1rem", xs: "2rem 1.5rem", mobile: "2rem" },
+        padding: { xxs: "2rem .5rem", sm: 4 },
 
+        minHeight: {
+          xxs: "fit-content",
+          xs: "450px",
+          // sm: "500px",
+          // md: "calc(100vh - 70px)",
+        },
         [mobileLandscape]: {
-          height: "fit-content",
-          minHeight: { xxs: "calc(100vh - 70px)", lg: "600px" },
+          minHeight: { xxs: "fit-content", sm: "400px", md: "600px" },
         },
-        [mobilePortrait]: {
-          height: "fit-content",
-          minHeight: { xxs: "calc(100vh - 70px)", mobile: "650px" },
-        },
+        [iphone4]: { height: "calc(100vh - 70px)", padding: ".5rem" },
+        position: "relative",
+
+        // border: 1,
+
+        // "&:before": {
+        //   content: "''",
+        //   position: "absolute",
+        //   width: 1,
+        //   height: 1,
+        //   backgroundImage: `url(${texture})`,
+        //   backgroundSize: "150px",
+        //   backgroundPosition: "center",
+        //   opacity: 0.25,
+
+        //   // backgroundRepeat: "no-repeat",
+        // },
       }}
     >
       <Container
-        maxWidth={true}
+        // maxWidth={"lg"}
         sx={{
+          zIndex: 1,
           width: 1,
           height: 1,
-          // border: 1,
-          maxWidth: "lg",
-          // border: 1,
+          maxWidth: { xxs: "sm", md: "lg" },
           display: "grid",
-          gridTemplateColumns: { xxs: "1fr", md: ".75fr 1fr", lg: ".6fr 1fr" },
+          gridTemplateColumns: { xxs: "1fr", md: ".6fr 1fr", lg: ".5fr 1fr" },
           gap: 8,
-
-          // [mobilePortrait]: {
-          //   // gap: "1rem",
-          //   // justifyContent: "space-around",
-          //   height: "fit-content",
-          //   minHeight: "375px",
-          // },
         }}
       >
         <Box
           sx={{
-            // border: 1,
-            aspectRatio: 1,
+            // aspectRatio: 1,
+            height: 1,
             width: 1,
             order: -1,
+            // border: 1,
             display: { xxs: "none", md: "block" },
 
             backgroundImage: `url(${logo3})`,
@@ -78,19 +91,19 @@ function HeroSection() {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
 
-            position: "relative",
-            "&:after": {
-              // content: "''",
-              position: "absolute",
-              top: 100,
-              left: 100,
-              right: 100,
-              bottom: 100,
-              backgroundImage: `url(${logo3})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            },
+            // position: "relative",
+            // "&:after": {
+            //   // content: "''",
+            //   position: "absolute",
+            //   top: 100,
+            //   left: 100,
+            //   right: 100,
+            //   bottom: 100,
+            //   backgroundImage: `url(${logo3})`,
+            //   backgroundSize: "contain",
+            //   backgroundPosition: "center",
+            //   backgroundRepeat: "no-repeat",
+            // },
           }}
         ></Box>
         <Box
@@ -98,45 +111,24 @@ function HeroSection() {
           sx={{
             height: 1,
             width: 1,
-            gap: { xxs: "2rem", xs: "3rem" },
+            gap: { xxs: 6, sm: 4 },
             // border: 1,
           }}
         >
           <Typography
-            variant='heading3'
-            color='#fff'
-            sx={{
-              textAlign: { xxs: "center", md: "left" },
-              fontWeight: 400,
-              fontSize: { xxs: "50px", lg: "70px" },
-              lineHeight: { xxs: "70px", lg: "80px" },
-              "& .emphasize": {
-                color: "secondary.main",
-                textTransform: "uppercase",
-                fontWeight: 700,
-              },
-            }}
+            variant='heading1'
+            textAlign={{ xxs: "center", md: "left" }}
           >
             Life's too short for{" "}
-            <span className='emphasize'>boring colors</span>!
+            <span className='emphasize'>boring colors!</span>
           </Typography>
           <Typography
-            variant='subHeading2'
-            color='background.primary'
-            sx={{
-              textAlign: { xxs: "center", md: "left" },
-
-              fontWeight: 500,
-              // display: { xxs: "block", md: "none", lg: "block" },
-              // fontSize: { xxs: "16px", xs: "18px", mobile: "20px", sm: "24px" },
-              // lineHeight: {
-              //   xxs: "28px",
-              //   xs: "30px",
-              //   mobile: "32px",
-              //   sm: "36px",
-              // },
-            }}
+            variant='subHeading'
+            textAlign={{ xxs: "center", md: "left" }}
+            // sx={{ fontWeight: 500 }}
           >
+            {/* Mix, match, and perfect your ideal color palette for your next
+            project. */}
             Mix, match, and perfect your ideal color palette for your next
             project. Color your world your way!
           </Typography>

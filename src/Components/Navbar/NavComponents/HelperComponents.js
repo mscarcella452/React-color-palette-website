@@ -30,14 +30,7 @@ export function NavLink({ to = "/", variant = "label", icon, children }) {
         variant={variant}
         sx={{
           color: "background.secondary",
-          fontWeight: variant === "subHeading2" ? 700 : 500,
-
-          "& .logo_alternate": {
-            color: "info.main",
-            fontWeight: 700,
-          },
-
-          "&:hover": { color: "info.main" },
+          // fontWeight: variant === "subHeading3" ? 700 : 500,
         }}
       >
         {children}

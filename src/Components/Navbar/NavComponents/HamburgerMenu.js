@@ -116,7 +116,12 @@ function HamburgerMenu({ hamburgerMenuRef }) {
               },
             }}
           >
-            <NavLink key={index} to={navLink.to} icon={navLink.icon}>
+            <NavLink
+              key={index}
+              to={navLink.to}
+              icon={navLink.icon}
+              variant='subHeading3'
+            >
               {navLink.text}
             </NavLink>
           </Box>

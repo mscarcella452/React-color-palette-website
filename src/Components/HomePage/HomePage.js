@@ -10,9 +10,14 @@ import Footer from "../Footer/Footer";
 import { mobileLandscape, mobilePortrait } from "../../Theme/mediaQueries";
 import SiteOverview from "./Components/SiteOverview";
 import { UIContext } from "../../Context/AppContext";
+import colorSchemes from "./colorSchemes.png";
+import colorPalettes from "./colorPalettes.png";
+import composition from "./composition.png";
 
 const paintStroke =
   'url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png")';
+
+const mockImage = "https://pngimg.com/uploads/brush/brush_PNG7375.png";
 
 function HomePage() {
   const { currentUser, users } = useContext(UIContext);
@@ -41,8 +46,10 @@ function HomePage() {
       </Box> */}
 
       <HeroSection />
-      <Feature contentIndex={0} />
       <MockFeature />
+
+      <Feature contentIndex={0} />
+      <PaletteFeatures />
       <SiteOverview contentIndex={0} />
       <Feature contentIndex={1} />
       <PaletteFeatures />

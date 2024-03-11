@@ -66,31 +66,33 @@ function Navbar() {
         sx={{
           padding: { xxs: "10px 1.5rem", sm: "10px 2rem" },
           justifyContent: "space-between",
+          gap: 2,
         }}
       >
+        {!lockMenu && (
+          <IconButton
+            onClick={handleClick}
+            variant='primary'
+            sx={{ zIndex: 2 }}
+          >
+            <AnimatedHamburgerIcon
+              animate={showMenu}
+              backgroundColor='info.main'
+            />
+          </IconButton>
+        )}
         <Box
           className='logo_wrapper flexRow'
           sx={{
-            gap: !lockMenu && 2,
-            // border: 1,
             width: lockMenu && 225,
             flex: !lockMenu && 1,
+            justifyContent: { xxs: "center", sm: "flex-start" },
+            [mobileLandscape]: {
+              justifyContent: "center",
+            },
           }}
         >
-          {!lockMenu && (
-            <IconButton
-              onClick={handleClick}
-              variant='primary'
-              sx={{ zIndex: 2 }}
-            >
-              <AnimatedHamburgerIcon
-                animate={showMenu}
-                backgroundColor='info.main'
-              />
-            </IconButton>
-          )}
-
-          <NavLink variant='subHeading1'>
+          <NavLink variant='heading3'>
             palette<span className='logo_alternate'>CRAFT</span>
           </NavLink>
         </Box>
@@ -100,7 +102,7 @@ function Navbar() {
             sx={{ border: 0, width: { xxs: 475, lg: 625 } }}
           >
             {navLinksData.map((navLink, index) => (
-              <NavLink key={index} to={navLink.to} variant='subHeading2'>
+              <NavLink key={index} to={navLink.to} variant='subHeading'>
                 {navLink.text}
               </NavLink>
             ))}
@@ -110,7 +112,7 @@ function Navbar() {
           className='authentication_wrapper flexRow'
           sx={{
             width: { xxs: "fit-content", sm: 225 },
-            [mobileLandscape]: { width: 225 },
+            [mobileLandscape]: { width: { xxs: "fit-content", sm: 225 } },
           }}
         >
           <>
