@@ -19,7 +19,7 @@ const colors = {
     primary: "#F8F8F8",
     secondary: "#ECECEC",
   },
-  fonts: { primary: "#000000", secondary: "#FFFFFF" },
+  fonts: { primary: "#2F2E41", secondary: "#FFFFFF" },
 };
 
 const palettes = {

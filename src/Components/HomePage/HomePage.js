@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import { Paper, Container, Typography, Box, Button } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
-import HeroSection from "./Components/HeroSection";
+import HeroSection from "./Components/HeroSection/HeroSection";
 import Feature from "./Components/Features/Feature";
 import MockFeature from "./Components/Mock Feature/MockFeature";
 import PaletteShowcase from "./Components/PaletteShowcase";
@@ -13,6 +13,8 @@ import { UIContext } from "../../Context/AppContext";
 import colorSchemes from "./colorSchemes.png";
 import colorPalettes from "./colorPalettes.png";
 import composition from "./composition.png";
+import FormDialog from "../AuthenticationForm/FormDialog";
+import addColor from "./addColor.png";
 
 const paintStroke =
   'url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png")';
@@ -26,7 +28,10 @@ function HomePage() {
     <Paper
       variant='pagePaper'
       ref={homepageRef}
-      sx={{ overscrollBehavior: "none" }}
+      sx={{
+        backgroundColor: "#fff",
+        overscrollBehavior: "none",
+      }}
     >
       <Navbar forwardedRef={homepageRef} />
 

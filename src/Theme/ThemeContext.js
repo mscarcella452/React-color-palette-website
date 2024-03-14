@@ -111,6 +111,8 @@ const appTheme = createTheme({
 
           fontSize: "14px",
           height: "35px",
+          fontFamily: fonts.Montserrat,
+          textTransform: "capitalize",
           // ...typographyVariants.label,
           [xs]: { height: "40px" },
           [sm]: { fontSize: "16px" },
@@ -138,16 +140,19 @@ const appTheme = createTheme({
         {
           props: { variant: "secondary" },
           style: {
-            color: palettes.background.secondary,
+            color: "#2F2E41",
+            // color: palettes.info.main,
+            // backgroundColor: "#2F2E41",
+            backgroundColor: palettes.background.secondary,
+            // backgroundColor: "#fff",
 
-            backgroundColor: "#4B46B2",
+            // backgroundColor: "#4B46B2",
+            // backgroundColor: "#E6E6E6",
             // color: palettes.background.primary,
 
-            // border: "solid 1px",
-            borderColor: "#27245D",
-
             "&:hover": {
-              backgroundColor: "#4B46B2",
+              // backgroundColor: "#fff",
+              backgroundColor: palettes.background.secondary,
             },
           },
         },
@@ -186,6 +191,44 @@ const appTheme = createTheme({
         },
       ],
     },
+    MuiTextField: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          padding: 0,
+          width: "100%",
+          height: "50px",
+
+          "& .MuiOutlinedInput-root": {
+            backgroundColor: "#fff",
+            borderColor: "#E6E6E6", // Change the outline color when focused here
+            fontFamily: fonts.Montserrat,
+            color: "#2F2E41",
+            fontWeight: 500,
+            height: "100%",
+            width: "100%",
+            padding: "5px",
+            boxShadow: 0,
+            "&:hover": {
+              borderColor: "#E6E6E6", // Change the hover color here
+            },
+          },
+          "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+            {
+              borderColor: "#E6E6E6", // Change the outline color when focused here
+            },
+        },
+      },
+
+      // variants: [
+      //   {
+      //     props: { variant: "" },
+      //     style: {
+
+      //     },
+      //   },
+      // ],
+    },
 
     MuiTypography: {
       styleOverrides: {
@@ -202,6 +245,7 @@ const appTheme = createTheme({
           },
           "& .emphasize": {
             color: palettes.secondary.main,
+
             textTransform: "uppercase",
             fontWeight: 700,
           },
@@ -239,14 +283,16 @@ const appTheme = createTheme({
 });
 
 appTheme.typography.heading1 = {
-  fontWeight: 500,
+  fontWeight: 600,
   fontFamily: fonts.Montserrat,
-  color: palettes.background.primary,
+  color: palettes.fontColor.primary,
   fontSize: "45px",
+  lineHeight: 1.1,
   [iphone4]: { fontSize: "35px" },
-  [mobile]: { fontSize: "45px" },
+  [mobile]: { fontSize: "50px" },
   [sm]: { fontSize: "55px" },
-  // [md]: { fontSize: "75px" },
+  [md]: { fontSize: "60px" },
+  [lg]: { fontSize: "65px" },
 };
 appTheme.typography.heading2 = {
   fontWeight: 400,
@@ -277,23 +323,8 @@ appTheme.typography.subHeading = {
   fontFamily: fonts.Poppins,
 };
 
-// appTheme.typography.label = {
-//   // fontFamily: fonts.Poppins,
-//   fontWeight: 400,
-//   // color: "navy",
-//   fontSize: "14px",
-//   lineHeight: "30px",
-
-//   [xs]: { fontSize: "16px" },
-//   [mobile]: { fontSize: "18px" },
-//   [mobileLandscape]: {
-//     [xs]: { fontSize: "16px" },
-//     // [sm]: { fontSize: "16px" },
-//   },
-// };
-
 appTheme.typography.label = {
-  fontWeight: 300,
+  fontWeight: 400,
   fontSize: "20px",
 };
 appTheme.typography.tinyLabel = {
@@ -306,8 +337,9 @@ appTheme.typography.p = {
   textAlign: "left",
   fontSize: "18px",
   [mobile]: { fontSize: "20px" },
-  lineHeight: 2,
+  lineHeight: 1.5,
   fontFamily: fonts.Montserrat,
+  color: palettes.fontColor.primary,
 };
 
 export default appTheme;

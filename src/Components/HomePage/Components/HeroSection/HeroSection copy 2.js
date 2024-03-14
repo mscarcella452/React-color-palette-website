@@ -13,9 +13,8 @@ import {
   mobileLandscape,
   mobilePortrait,
   iphone4,
-} from "../../../Theme/mediaQueries";
-import FormDialog from "../../AuthenticationForm/FormDialog";
-import HomeLogo from "../HomeLogo.png";
+} from "../../../../Theme/mediaQueries";
+import FormDialog from "../../../AuthenticationForm/FormDialog";
 
 const logo =
   "https://i.pinimg.com/originals/63/f9/d1/63f9d1256f25a77e6c94c90c097ad96a.png";

@@ -29,7 +29,8 @@ export function NavLink({ to = "/", variant = "label", icon, children }) {
         className='link_typography'
         variant={variant}
         sx={{
-          color: "background.secondary",
+          // color: "background.secondary",
+          color: "#2F2E41",
           // fontWeight: variant === "subHeading3" ? 700 : 500,
         }}
       >

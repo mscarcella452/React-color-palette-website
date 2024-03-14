@@ -5,7 +5,7 @@ import SignUpForm from "./Components/SignUpForm";
 import LogInForm from "./Components/LogInForm";
 import DialogWrapper from "./Components/DialogWrapper";
 
-function FormDialog({ variant, showIcon = false, buttonLabel = variant }) {
+function FormDialog({ variant, showIcon = false, buttonLabel = variant, sx }) {
   const [formOpen, setFormOpen] = useState(false);
   const [formVariant, setFormVariant] = useState(variant);
 
@@ -29,7 +29,7 @@ function FormDialog({ variant, showIcon = false, buttonLabel = variant }) {
           <Button
             onClick={handleOpen}
             variant={btnVariantData[variant]}
-            sx={{ width: 1, maxWidth: 400 }}
+            sx={{ width: 1, maxWidth: 400, ...sx }}
           >
             {buttonLabel}
           </Button>

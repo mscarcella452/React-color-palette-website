@@ -27,3 +27,47 @@ code {
 .flexColumn {
   flex-direction: column;
 }
+
+.textureGradient::before,
+.textureGradient::after {
+  bottom: 0;
+  background-position: center center;
+  z-index: 1;
+}
+
+.textureGradient_navbar::before {
+  top: 0;
+  background-position: top top;
+}
+.textureGradient_navbar::before,
+.textureGradient_navbar::after {
+  z-index: -1;
+}
+
+.textureGradient::before,
+.textureGradient_navbar::before {
+  content: "";
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png");
+  background-size: 400px;
+  opacity: 0.65;
+}
+.textureGradient::after,
+.textureGradient_navbar::after {
+  content: "";
+  position: absolute;
+  height: 100vh;
+  bottom: 0;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    to right,
+    white 0%,
+    rgba(255, 255, 255, 0.35) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 100%;
+  background-position: center center;
+  opacity: 0.65;
+}

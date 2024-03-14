@@ -9,6 +9,9 @@ import FormDialog from "../AuthenticationForm/FormDialog";
 import { navLinksData } from "./NavbarData";
 import "./Navbar.css";
 
+const texture =
+  "https://www.transparenttextures.com/patterns/subtle-white-feathers.png";
+
 function Navbar() {
   const { currentUser } = useContext(UIContext);
   const [showMenu, setShowMenu] = useState(false);
@@ -50,15 +53,18 @@ function Navbar() {
   return (
     <Paper
       ref={navbarRef}
-      className='navbar_container'
+      className='navbar_container textureGradient_navbar'
       elevation={0}
       sx={{
-        backgroundColor: {
-          xxs: showMenu ? "primary.main" : "primary.dark",
+        // backgroundColor: {
+        //   xxs: showMenu ? "primary.main" : "primary.dark",
 
-          md: "primary.dark",
-        },
+        //   md: "#fff",
+        // },
+        backgroundColor: "#fff",
         transition: "all 1s linear",
+        zIndex: 10,
+        overflow: "hidden",
       }}
     >
       <Box
@@ -85,6 +91,7 @@ function Navbar() {
           className='logo_wrapper flexRow'
           sx={{
             width: lockMenu && 225,
+
             flex: !lockMenu && 1,
             justifyContent: { xxs: "center", sm: "flex-start" },
             [mobileLandscape]: {
@@ -99,10 +106,10 @@ function Navbar() {
         {lockMenu && (
           <Box
             className='navLinks_wrapper flexRow'
-            sx={{ border: 0, width: { xxs: 475, lg: 625 } }}
+            sx={{ border: 0, width: { xxs: 475, lg: 625 }, display: "none" }}
           >
             {navLinksData.map((navLink, index) => (
-              <NavLink key={index} to={navLink.to} variant='subHeading'>
+              <NavLink key={index} to={navLink.to} variant='label'>
                 {navLink.text}
               </NavLink>
             ))}
@@ -127,6 +134,7 @@ function Navbar() {
                 <FormDialog variant='Log In' showIcon={!showSignUpDialog} />
               </>
             )}
+            {/* <FormDialog variant='Log In' showIcon={true} /> */}
           </>
         </Box>
       </Box>
