@@ -53,7 +53,8 @@ function Navbar() {
   return (
     <Paper
       ref={navbarRef}
-      className='navbar_container textureGradient_navbar'
+      className='navbar_container'
+      // className='navbar_container textureGradient_navbar'
       elevation={0}
       sx={{
         // backgroundColor: {
@@ -62,6 +63,7 @@ function Navbar() {
         //   md: "#fff",
         // },
         backgroundColor: "#fff",
+        // backgroundColor: "background.primary",
         transition: "all 1s linear",
         zIndex: 10,
         overflow: "hidden",

@@ -13,8 +13,8 @@ import {
   mobileLandscape,
   mobilePortrait,
   iphone4,
-} from "../../../Theme/mediaQueries";
-import FormDialog from "../../AuthenticationForm/FormDialog";
+} from "../../../../Theme/mediaQueries";
+import FormDialog from "../../../AuthenticationForm/FormDialog";
 
 function HeroSection() {
   const largerScreen = useMediaQuery(md);

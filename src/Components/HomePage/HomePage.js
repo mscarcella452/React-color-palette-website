@@ -9,6 +9,7 @@ import PaletteFeatures from "./Components/PaletteFeatures/PaletteFeatures";
 import Footer from "../Footer/Footer";
 import { mobileLandscape, mobilePortrait } from "../../Theme/mediaQueries";
 import SiteOverview from "./Components/SiteOverview";
+import FeatureContent from "./Components/FeatureContent/FeatureContent";
 import { UIContext } from "../../Context/AppContext";
 import colorSchemes from "./colorSchemes.png";
 import colorPalettes from "./colorPalettes.png";
@@ -51,6 +52,7 @@ function HomePage() {
       </Box> */}
 
       <HeroSection />
+      <FeatureContent />
       <MockFeature />
 
       <Feature contentIndex={0} />

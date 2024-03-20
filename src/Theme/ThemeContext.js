@@ -143,7 +143,7 @@ const appTheme = createTheme({
             color: "#2F2E41",
             // color: palettes.info.main,
             // backgroundColor: "#2F2E41",
-            backgroundColor: palettes.background.secondary,
+            backgroundColor: palettes.background.primary,
             // backgroundColor: "#fff",
 
             // backgroundColor: "#4B46B2",
@@ -152,7 +152,7 @@ const appTheme = createTheme({
 
             "&:hover": {
               // backgroundColor: "#fff",
-              backgroundColor: palettes.background.secondary,
+              backgroundColor: palettes.background.primary,
             },
           },
         },
@@ -244,10 +244,10 @@ const appTheme = createTheme({
             fontWeight: 700,
           },
           "& .emphasize": {
-            color: palettes.secondary.main,
+            color: palettes.info.main,
 
             textTransform: "uppercase",
-            fontWeight: 700,
+            fontWeight: 600,
           },
           "& .emphasize_secondary": {
             color: palettes.primary.main,
@@ -299,10 +299,10 @@ appTheme.typography.heading2 = {
   fontFamily: fonts.Montserrat,
   color: palettes.background.primary,
   fontSize: "20px",
-  lineHeight: "45px",
+  // lineHeight: "45px",
 
-  [mobile]: { fontSize: "25px" },
-  [sm]: { fontSize: "30px" },
+  // [mobile]: { fontSize: "25px" },
+  [mobile]: { fontSize: "30px" },
   [lg]: { fontSize: "35px" },
 };
 
@@ -314,13 +314,15 @@ appTheme.typography.heading3 = {
 };
 
 appTheme.typography.subHeading = {
-  fontWeight: 400,
-  fontSize: "18px",
+  fontWeight: 600,
+  fontSize: "16px",
   lineHeight: 2,
-  color: palettes.background.primary,
-  [xs]: { fontSize: "20px" },
-  [mobile]: { fontSize: "22px" },
-  fontFamily: fonts.Poppins,
+  // [xs]: { fontSize: "20px" },
+  [mobile]: { fontSize: "18px" },
+  [md]: { fontSize: "20px" },
+  fontFamily: fonts.Montserrat,
+  color: palettes.fontColor.primary,
+  lineHeight: 1.25,
 };
 
 appTheme.typography.label = {
@@ -335,8 +337,9 @@ appTheme.typography.tinyLabel = {
 appTheme.typography.p = {
   fontWeight: 400,
   textAlign: "left",
-  fontSize: "18px",
-  [mobile]: { fontSize: "20px" },
+  fontSize: "12px",
+  [mobile]: { fontSize: "16px" },
+  [md]: { fontSize: "18px" },
   lineHeight: 1.5,
   fontFamily: fonts.Montserrat,
   color: palettes.fontColor.primary,

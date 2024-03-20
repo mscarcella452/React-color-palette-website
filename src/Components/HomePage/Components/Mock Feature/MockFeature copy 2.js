@@ -1,21 +1,19 @@
 import React from "react";
 import { Paper, Container, Box, Typography } from "@mui/material";
 import exampleMockFeature from "./exampleMockFeature.png";
-import mockDashboard from "./mockDashboard.png";
 
 const mockImage = "https://clipart-library.com/image_gallery2/Laptop.png";
 
 function MockFeature() {
   return (
-    <Box
+    <Paper
       className='flexColumn'
-      eleavtion={0}
       // variant='featurePaper'
       sx={{
         backgroundColor: "#fff",
-        // backgroundColor: "info.dark",
-        backgroundColor: "background.primary",
-        // padding: { xxs: "2rem 1rem", sm: "2rem", lg: 6 },
+        backgroundColor: "info.dark",
+        backgroundColor: "background.secondary",
+        padding: { xxs: "2rem 1rem", sm: "2rem", lg: 6 },
       }}
     >
       <Container
@@ -23,11 +21,11 @@ function MockFeature() {
         // maxWidth={true}
         sx={{
           width: 1,
-          minHeight: { xxs: 600, md: 450 },
+          height: { xxs: "fit-content", md: 400 },
           display: "grid",
-          gridTemplateColumns: { xxs: "1fr", md: "1fr .5fr" },
-          gridTemplateRows: { xxs: "1fr .5fr", md: "1fr" },
-          gap: { xxs: 2, md: 4 },
+          gridTemplateColumns: { xxs: "1fr", sm: "1fr 1fr" },
+          gridTemplateRows: { xxs: "1fr .75fr", sm: "1fr" },
+          gap: { xxs: "2rem", sm: "3rem" },
 
           // borderRadius: "30px 30px 0 0 ",
         }}
@@ -48,23 +46,18 @@ function MockFeature() {
           className='flexColumn'
           sx={{
             gap: "20px",
-            width: 1,
-            // display: "none",
             // border: 1,
             height: 1,
             // order: { xxs: -1, md: 1 },
           }}
         >
           <Typography
-            variant='heading1'
+            variant='heading3'
             sx={{
               width: 1,
-              textAlign: { xxs: "center", md: "left" },
+              textAlign: { xxs: "center", sm: "left" },
               color: "fontColor.primary",
-              fontWeight: { xxs: 400, md: 400 },
-              "& .emphasize": {
-                fontWeight: { xxs: 700, md: 700 },
-              },
+              fontWeight: 300,
 
               // color: "background.secondary",
             }}
@@ -72,14 +65,14 @@ function MockFeature() {
             your palette. <span className='emphasize'>Your Vision.</span>
           </Typography>
           <Typography
-            variant='subHeading'
+            variant='p'
             maxWidth={"md"}
             sx={{
               textAlign: { xxs: "center", sm: "left" },
-              color: "info.dark",
-              display: "none",
+              color: "fontColor.primary",
 
               lineHeight: 2,
+              fontWeight: 300,
             }}
           >
             With an intuitive interface and a diverse color wheel, you can
@@ -88,7 +81,7 @@ function MockFeature() {
           </Typography>
         </Box>
       </Container>
-    </Box>
+    </Paper>
   );
 }
 
